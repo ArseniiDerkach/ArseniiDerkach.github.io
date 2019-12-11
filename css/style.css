@@ -669,6 +669,7 @@ body {
     font-size: 26px;
     font-weight: bold;
     margin-bottom: 50px;
+    text-align: center;
 }
 .article-heading.with-image:before {
     content: '';
@@ -785,5 +786,21 @@ body {
 @media(max-width: 991px) {
     .event-cards {
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    .single-page .main-content {
+        flex-basis: 100%;
+    }
+    .event-cards__item-img img {
+        width: 100%;
+    }
+    .main-content .single-column {
+        width: 100%;
+        padding: 0 10px;
     }
 }
