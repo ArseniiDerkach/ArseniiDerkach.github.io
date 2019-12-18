@@ -5,286 +5,265 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <title>Robo-T</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/circle.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js"></script>
 </head>
 
 <body>
     <header class="header">
-        <div class="container">
-            <div class="header-wrapper">
-                <div class="header__logo"><img src="img/logo-2.png" alt=""></div>
-                <div class="header__title">
-                    <div class="header__title-line">
-                        Сеть детских центров в <b>ВАО</b>
-                    </div>
-                    <div class="header__title-line">
-                        При поддержке <b>Национального Института им. Екатерины Великой</b>
-                    </div>
-                </div>
-                <div class="header__social">
-                    <a href="#"><img src="img/fb.png" alt=""></a>
-                    <a href="#"><img src="img/instagram.png" alt=""></a>
-                    <a href="#"><img src="img/vk.png" alt=""></a>
-                </div>
-                <div class="header__contacts">
-                    <div class="header__contacts-phone">+7 499 686 10 82</div>
-                    <div class="header__contacts-address">Москва, ул. 4-я Парковая, 9/21</div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="menu">
-        <div class="container">
-            <ul class="nav">
-                <li class="nav__item"><a href="#">Расписание</a></li>
-                <li class="nav__item"><a href="#">Прайс</a></li>
-                <li class="nav__item"><a href="#">Специалисты</a></li>
-                <li class="nav__item"><a href="#">Программы</a></li>
-                <li class="nav__item"><a href="#">Как добраться?</a></li>
-                <li class="nav__item"><a href="#">Оплата</a></li>
+        <div class="container container_header">
+            <img class="header__logo" src="img/logo.png" alt="Robotrade" />
+            <ul class="header__menu">
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-item-link">how it works</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-item-link">statistics</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-item-link">deposit &amp; cashout history</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-item-link">trade history</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-item-link">rules</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#" class="header__menu-item-link">sign up</a>
+                </li>
             </ul>
         </div>
-    </div>
+    </header>
     <section class="promo">
         <div class="container container_promo">
-            <div class="promo__description">
-                <div class="promo__title">Обучающие и творческие занятия для детей с первого года жизни и для подростков
+            <div class="promo__details">
+                <div class="promo__headline">
+                    I am triangle algorythm bot <br><span class="text text_orange">that makes profit</span><br> for you
                 </div>
-                <div class="promo__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat.</div>
-                <a class="promo__button" href="#">Записать ребенка на занятия</a>
+                <div class="promo__sign-up">
+                    <div class="promo__sign-up-heading">Create your Account to unlock all the features</div>
+                    <form action="#" class="promo__form">
+                        <input type="email" placeholder="E-mail" class="email">
+                        <a class="btn btn-primary" href="#">Create account</a>
+                    </form>
+                </div>
             </div>
-            <div class="promo__img">
-                <img src="img/promo-img-2.png" alt="">
-            </div>
-        </div>
-    </section>
-    <section class="info">
-        <div class="container">
-            <div class="row">
-                <div class="info__column">
-                    <div class="info__column-item">
-                        <div class="info__column-item-title">Мастерские и студии</div>
-                        <div class="info__column-item-description"></div>
-                        <a class="info__column-item-read-more" href="#">Подробнее</a>
-                    </div>
-                    <div class="info__column-item">
-                        <div class="info__column-item-title">Афиша</div>
-                        <div class="info__column-item-description">Все события и мероприятия в удобном календаре</div>
-                        <a class="info__column-item-read-more" href="#">Подробнее</a>
-                    </div>
-                    <div class="info__column-item">
-                        <div class="info__column-item-title">Квадрат для взрослых</div>
-                        <div class="info__column-item-description">Дополнительная информация</div>
-                        <a class="info__column-item-read-more" href="#">Подробнее</a>
-                    </div>
-                </div>
-                <div class="info__slider-wrapper">
-                    <div class="info__slider">
-                        <div class="info__slider-slide">
-                            <div class="info__slider-slide-title">Путешествие ребенка в счастливую жизнь начинается
-                                здесь</div>
-                            <div class="info__slider-slide-description">В настоящее время психолог центра проводит
-                                тестирование
-                                высших психических функций детей от 3 до 16 лет. Приглашаем вас пройти тестирование и
-                                получить
-                                профессиональные рекомендации специалиста по развитию природного потенциала вашего
-                                ребенка.
-                            </div>
-                        </div>
-                        <div class="info__slider-slide">
-                            <div class="info__slider-slide-title">Путешествие ребенка в счастливую жизнь начинается
-                                здесь</div>
-                            <div class="info__slider-slide-description">В настоящее время психолог центра проводит
-                                тестирование
-                                высших психических функций детей от 3 до 16 лет. Приглашаем вас пройти тестирование и
-                                получить
-                                профессиональные рекомендации специалиста по развитию природного потенциала вашего
-                                ребенка.
-                            </div>
-                        </div>
-                        <div class="info__slider-slide">
-                            <div class="info__slider-slide-title">Путешествие ребенка в счастливую жизнь начинается
-                                здесь</div>
-                            <div class="info__slider-slide-description">В настоящее время психолог центра проводит
-                                тестирование
-                                высших психических функций детей от 3 до 16 лет. Приглашаем вас пройти тестирование и
-                                получить
-                                профессиональные рекомендации специалиста по развитию природного потенциала вашего
-                                ребенка.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="promo__spinner">
+                <div class="spinner__image"><img src="img/tiranglepng.png" alt=""></div>
+                <div class="spinner__edge spinner__edge_1"></div>
+                <div class="spinner__edge spinner__edge_2"></div>
+                <div class="spinner__edge spinner__edge_3"></div>
             </div>
         </div>
     </section>
-    <section class="why-us">
-        <div class="container">
-            <div class="why-us__title section-title">Почему родители нам доверяют?</div>
-            <div class="why-us__items">
-                <div class="why-us__item">
-                    <div class="why-us__item-description">
-                        <div class="why-us__item-title">Занятия в игровой форме</div>
-                        <div class="why-us__item-text">Всем известно что дети учатся через игру. И именно в игровой
-                            форме они способны воспринимать больше информации и не теряют интереса к познанию и
-                            обучению.</div>
-                    </div>
-                    <img class="why-us__item-img" src="img/trust-img-1.png" alt="">
+    <section class="statistics">
+        <div class="container container_statistics">
+            <div class="section__headline">
+                How it works
+            </div>
+            <div class="statistics__items">
+                <div class="statistics__current-text">
+                    <p>We are the first and fastest in the world, who keeps track of new crypto exchanges, new tokens,
+                        all prices - for profit, through an instant triple exchange of tokens.</p>
+                    <p>We are looking for situations in which it is possible to swap three assets between each other,
+                        while making a profit.</p>
+                    <p>For example, asset A is exchanged for asset B, then asset B is exchanged for asset С, then asset
+                        С is exchanged back for asset A, with a profit.</p>
+                    <p>Such situations are rare, but they do happen. This process is called financial Triangular
+                        arbitrage.</p>
                 </div>
-                <div class="why-us__item">
-                    <div class="why-us__item-description">
-                        <div class="why-us__item-title">Индивидуальный подход</div>
-                        <div class="why-us__item-text">Каждый ребенок проходит первоначальное тестирование способностей
-                            у психолога, чтобы определить сильные и слабые стороны мышления и личности</div>
-                    </div>
-                    <div class="why-us__item-img"><img src="img/trust-img-2.png" alt=""></div>
+                <div class="statistic__item">
+                    <div class="statistic__item-number">01</div>
+                    <div class="statitic__item-text">make <br>deposit</div>
                 </div>
-                <div class="why-us__item">
-                    <div class="why-us__item-description">
-                        <div class="why-us__item-title">Проверенные методы обучения</div>
-                        <div class="why-us__item-text">В Центре применяются методики обучения и преподавания, которые
-                            дают стабильный высокий результат уже более 15 лет</div>
-                    </div>
-                    <img class="why-us__item-img" src="img/trust-img-3.png" alt="">
+                <div class="statistic__item">
+                    <div class="statistic__item-number">02</div>
+                    <div class="statitic__item-text">deposit<br> allocation</div>
                 </div>
-                <div class="why-us__item">
-                    <div class="why-us__item-description">
-                        <div class="why-us__item-title">Уютные аудитории</div>
-                        <div class="why-us__item-text">Все помещения оборудованы государственным стандартам, помещения
-                            охраняются и находятся под круглосуточным видеонаблюдением, постоянно проводится
-                            дезинфекция, кварцевание и санитарная обработка помещений</div>
-                    </div>
-                    <div class="why-us__item-img"><img src="img/trust-img-4.png" alt=""></div>
+                <div class="statistic__item">
+                    <div class="statistic__item-number">03</div>
+                    <div class="statitic__item-text">triangle<br> trading</div>
                 </div>
-                <div class="why-us__item">
-                    <div class="why-us__item-description">
-                        <div class="why-us__item-title">Быстрые результаты</div>
-                        <div class="why-us__item-text">Задача наших педагогов дать максимально бережно, максимально
-                            быстрые результаты. На занятиях с детьми обязательно чередуется пассивная и активная
-                            деятельность.</div>
-                    </div>
-                    <div class="why-us__item-img"><img src="img/trust-img-5.png" alt=""></div>
+                <div class="statistic__item">
+                    <div class="statistic__item-number">04</div>
+                    <div class="statitic__item-text">convert<br> to token</div>
                 </div>
-                <div class="why-us__item">
-                    <div class="why-us__item-description">
-                        <div class="why-us__item-title">Небольшие группы</div>
-                        <div class="why-us__item-text">Занятия в малых группах по 6-8 человек, строго по возрастам и
-                            уровню подготовки детей — одно из главных условий успешной социализации</div>
-                    </div>
-                    <div class="why-us__item-img"><img src="img/trust-img-6.png" alt=""></div>
+                <div class="statistic__item">
+                    <div class="statistic__item-number">05</div>
+                    <div class="statitic__item-text">sell token<br> cashout</div>
                 </div>
+            </div>
+            <div class="triangle-item triangle-lg"><img src="img/triangle-item-lg.png" alt=""></div>
+        <div class="triangle-item triangle-sm"><img src="img/triangle-item-sm.png" alt=""></div>
+        </div>
+        
+    </section>
+    <section class="history-diagram">
+        <div class="container container_history">
+            <div class="section__headline">
+                Bot statistics
+            </div>
+        </div>
+        <div class="history-diagram-item">
+            <div class="diagram__left-side"></div>
+            <div class="diagram__image"><img src="img/stats-placeholder.png" alt=""></div>
+            <div class="diagram__right-side"></div>
+            <div class="diagram__check-btn">
+                <a class="btn btn-secondary" href="#" target="_blank">Check at blockchain history</a>
             </div>
         </div>
     </section>
-    <section class="about-us">
+    <section class="history-table">
         <div class="container">
-            <div class="about-us__title section-title">
-                Небольшой рассказ о нашем центре
+            <div class="history-table__item">
+                <div class="history__column">
+                    <div class="history__heading">Deposit history</div>
+                    <ul class="history__list deposit-history">
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">100$</span>
+                                <span class="history__item-date">10:12 at 20/10/2019</span>
+                            </a>
+                        </li>
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">100000$</span>
+                                <span class="history__item-date">10:09 at 20/10/2019</span>
+                            </a>
+                        </li>
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">0.005$</span>
+                                <span class="history__item-date">10:02 at 20/10/2019</span>
+                            </a>
+                        </li>
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">100$</span>
+                                <span class="history__item-date">10:00 at 20/10/2019</span>
+                            </a>
+                        </li>
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">100000$</span>
+                                <span class="history__item-date">09:59 at 20/10/2019</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="history__column">
+                    <div class="history__heading">Cashout history</div>
+                    <ul class="history__list cashout-history">
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">100$</span>
+                                <span class="history__item-date">10:12 at 20/10/2019</span>
+                            </a>
+                        </li>
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">100000$</span>
+                                <span class="history__item-date">10:09 at 20/10/2019</span>
+                            </a>
+                        </li>
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">0.005$</span>
+                                <span class="history__item-date">10:02 at 20/10/2019</span>
+                            </a>
+                        </li>
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">100$</span>
+                                <span class="history__item-date">10:00 at 20/10/2019</span>
+                            </a>
+                        </li>
+                        <li class="history__list-item">
+                            <a href="#" class="history__list-link">
+                                <span class="history__item-value">100000$</span>
+                                <span class="history__item-date">09:59 at 20/10/2019</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#" class="btn btn-primary">Sign up and deposit now</a>
             </div>
-            <div class="row">
-                <div class="about-us__text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. </p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                        est laborum</p>
+        </div>
+    </section>
+    <section class="trade-history-graph">
+        <div class="container container_graph">
+            <div class="section__headline">
+                Trade history
+            </div>
+            <div class="graph-slider-wrapper">
+            <div class="graph-slider">
+                <div class="graph__item">
+                    <img src="img/graph-placeholder.png" alt="">
                 </div>
-                <div class="about-us__img">
-                    <img src="img/about-img.png" alt="">
+                <div class="graph__item">
+                    <img src="img/graph-placeholder.png" alt="">
+                </div>
+                <div class="graph__item">
+                    <img src="img/graph-placeholder.png" alt="">
                 </div>
             </div>
-            <div class="about-us__slider-wrapper">
-                <div class="about-us__slider">
-                    <div class="about-us__slider-slide"><img src="img/about-slide-1.png" alt=""></div>
-                    <div class="about-us__slider-slide"><img src="img/about-slide-2.png" alt=""></div>
-                    <div class="about-us__slider-slide"><img src="img/about-slide-3.png" alt=""></div>
-                    <div class="about-us__slider-slide"><img src="img/about-slide-1.png" alt=""></div>
-                    <div class="about-us__slider-slide"><img src="img/about-slide-2.png" alt=""></div>
-                    <div class="about-us__slider-slide"><img src="img/about-slide-3.png" alt=""></div>
-                </div>
-                <div class="about-us__slider-arrows">
-                        <div class="about-us__slider-prev"></div>
-                        <div class="about-us__slider-next"></div>
-                </div>
+        </div>
+        </div>
+    </section>
+    <section class="register">
+        <div class="container register_container">
+            <div class="section__headline">Registration</div>
+            <div class="register__form">
+                <div class="register__form-subheading">Create your Account to unlock all the features</div>
+                <div class="register__form-heading">Register now<br> and get all the features</div>
+                <input type="email" placeholder="E-mail">
+                <a href="#" class="btn brn-primary">Create account</a>
             </div>
+            <div class="robot"><img src="img/robot-placeholder.png" alt=""></div>
+        <div class="triangle-item triangle-1"><img src="img/triangle-footer-lg.png" alt=""></div>
+        <div class="triangle-item triangle-2"><img src="img/triangle-footer-sm.png" alt=""></div>
+            <footer class="footer">
+                <div class="footer__menu">
+                    <ul class="footer__menu-items footer__menu-items-left">
+                        <li><a href="#">How it works</a></li>
+                        <li><a href="#">Statistics</a></li>
+                        <li><a href="#">Deposit &amp; cashout history</a></li>
+                    </ul>
+                    <a href="#" class="footer__logo"><img src="img/logo-footer.png" alt="Robotrade"></a>
+                    <ul class="footer__menu-items footer__menu-items-right">
+                        <li><a href="#">Trade history</a></li>
+                        <li><a href="#">Rules</a></li>
+                        <li><a href="#">Risk of loss</a></li>
+                    </ul>
+                </div>
+                <div class="footer__info">
+                    <div class="footer__copyright">COPYRIGHT: 2019 © <br>ROBOTRADE.IO</div>
+                    <div class="footer__social">
+                        <a href="#" class="social-icon icon_fb"></a>
+                        <a href="#" class="social-icon icon_tw"></a>
+                        <a href="#" class="social-icon icon_ig"></a>
+                    </div>
+                <div class="footer__contacts">
+                    <div class="footer__contact">Email:info@robotrade.io</div>
+                    <div class="footer__contact">T-gram:@ROBOTRADE.IO</div>
+                </div>
+                </div>
+                
+            </footer>
+        </div>
+        
+    </section>
 
-        </div>
-    </section>
-    <footer class="footer">
-        <div class="footer__bg"></div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="footer__col">
-                    <div class="footer__menu">
-                        <ul>
-                            <li><a href="#">Расписание</a></li>
-                            <li><a href="#">Прайс</a></li>
-                            <li><a href="#">Специалисты</a></li>
-                            <li><a href="#">Программы</a></li>
-                            <li><a href="#">Как добраться?</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__personnel-policy">
-                        <a href="#">Политика обработки персональных данных</a>
-                    </div>
-                </div>
-                <div class="footer__col">
-                    <div class="footer__partners">
-                        <div class="footer__heading">Наши партнеры:</div>
-                        <div class="footer__partner">
-                            <div class="footer__partner-logo"><img src="img/partner-1.png" alt=""></div>
-                            <div class="footer__partner-name">Национальный Институт им. Екатерины Великой</div>
-                        </div>
-                        <div class="footer__partner">
-                            <div class="footer__partner-logo"><img src="img/partner-2.png" alt=""></div>
-                            <div class="footer__partner-name">Программа повышения квалификации и переподготовки
-                                специалистов
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer__col">
-                    <div class="footer__contacts">
-                        <div class="footer__contacts-address">
-                            <div class="footer__heading">Адреса центров:</div>
-                            <ol class="footer__contacts-address-list">
-                                <li><a href="#">Москва, ул. 4-я Парковая, 9/21</a></li>
-                                <li><a href="#">Москва, ул. 8-я Аллейная, 21/9</a></li>
-                                <li><a href="#">Москва, ул. Никольская , 5 б</a></li>
-                            </ol>
-                        </div>
-                        <div class="footer__contacts-phone">+7 499 686 10 82</div>
-                        <a class="footer__contacts-email" href="mailto=test@test.com">dc.piligrimchiki@gmail.com</a>
-                        <div class="footer__contacts-social">
-                            <a href="#"><img src="img/fb.png" alt=""></a>
-                            <a href="#"><img src="img/instagram.png" alt=""></a>
-                            <a href="#"><img src="img/vk.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
