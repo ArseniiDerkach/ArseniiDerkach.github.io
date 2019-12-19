@@ -42,6 +42,7 @@ body {
 
 section {
     background-attachment: fixed;
+    overflow: hidden;
 }
 .container {
     width: 1510px;
@@ -79,6 +80,10 @@ section {
     
 }
 
+.visible-md {
+    display: none;
+}
+
 @media (max-width: 1510px) {
     .container {
         width: 1200px;
@@ -96,6 +101,16 @@ section {
     .container {
         width: 100%;
     }
+    .hidden-md {
+        display: none;
+    }
+    .visible-md {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    
 }
 
 .text.text_orange {
@@ -456,12 +471,17 @@ section {
 }
 
 .graph-slider-wrapper {
-    width: 100%;
-    /* overflow: hidden; */
+    width: calc(100% - 190px);
+    margin: 0 auto;
+    
+}
+
+.graph-slider {
+    margin-bottom: 40px;
 }
 
 .graph__item {
-    margin-bottom: 30px;
+    padding: 0 10px;
 }
 
 .graph__item img {
@@ -491,6 +511,7 @@ section {
     border: 2px solid #fff;
     outline: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .graph-slider .slick-active button {
@@ -500,8 +521,9 @@ section {
 .graph-slider .slick-arrow {
     background-image: url(../img/slider-arrow.png);
     position: absolute;
-    top: 85px;
+    top: 50%;
     font-size: 0;
+    transform: translateY(-50%);
     background-color: transparent;
     width: 46px;
     height: 89px;
@@ -513,13 +535,24 @@ section {
 
 
 .graph-slider .slick-prev {
-    transform: rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
     left: -90px;
 }
 
 .graph-slider .slick-next {
     right: -90px;
 }
+
+.graph {
+    margin: 30px 0;
+    overflow-x: scroll;
+}
+/* 
+.graph img{
+    max-width: 100%;
+} */
+
+
 
 .register {
     padding-top: 130px;
@@ -732,16 +765,37 @@ section {
 }
 
 @media(max-width: 991px) {
-.header__menu {
-    display: none;
-}
+    
+    .header__menu {
+        display: none;
+    }
     .section__headline {
         text-align: center;
-        font-size: 30px;
+        font-size: 42px;
         margin-bottom: 30px;
+    }
+    .container_promo {
+        flex-direction: column;
+        align-items: center;
+    }
+    .promo__headline {
+        font-size: 32px;
+    }
+    .promo__spinner {
+        width: 500px;
+        margin-bottom: 50px;
+        margin-top: 50px;
+    }
+    .promo__sign-up-heading {
+        padding-bottom: 30px;
+    }
+    .promo__form {
+        margin: 0 auto;
     }
     .statistics {
         height: auto;
+        padding-top: 100px;
+        padding-bottom: 60px;
     }
     .statistics__items {
         flex-direction: column;
@@ -754,14 +808,116 @@ section {
     .statistic__item {
         flex-basis: auto;
         margin-bottom: 0;
+        height: 110px;
+        transition: all .4s linear;
+    }
+    .statistic__item:hover {
         height: 150px;
+    }
+    .diagram__check-btn {
+        width: 100%;
+        padding: 0 30px;
     }
     .history__column {
         flex-basis: 100%;
+    }
+    .history__heading {
+        font-size: 42px;
+        text-align: center;
+    }
+
+    .graph-slider .slick-arrow {
+        width: 28px;
+        height: 54px;
+    }
+    .register__form {
+        width: 100%;
+        margin-top: 40px;
+    }
+    .register__form-heading {
+        order: 2;
+    }
+    .register__form-subheading {
+        font-size: 18px;
+    }
+    .register__form-heading {
+        margin-top: 40px;
+        font-size: 28px;
     }
     .footer__info {
         width: 100%;
         flex-wrap: wrap;
     }
 
+}
+
+@media (max-width: 479px) {
+    .promo__headline {
+        font-size: 25px;
+    }
+    .promo__spinner {
+        width: 100%;
+    }
+    .btn {
+        width: 250px;
+        font-size: 14px;
+        height: 35px;
+        line-height: 35px;
+    }
+    .promo__form {
+        padding: 0 30px;
+        width: 100%;
+    }
+    .promo__sign-up-heading {
+        padding: 0 15px 30px;
+        font-size: 14px;
+        text-align: center;
+    }
+    .promo__form .email {
+        font-size: 14px;
+        height: 33px;
+        line-height: 33px;
+        padding: 0 15px;
+        margin-bottom: 20px;
+    }
+    .promo__form .btn {
+        width: 100%;
+    }
+    .section__headline {
+        font-size: 30px;
+    }
+    .history__column {
+        padding: 0;
+    }
+    .history__list {
+        padding: 0;
+    }
+    .history__list-item {
+        padding: 0 40px
+    }
+    .history__heading {
+        font-size: 30px;
+    }
+    .history__list-link {
+        font-size: 14px;
+    }
+    .graph-slider .slick-arrow {
+        width: 14px;
+        height: 28px;
+    }
+    .register__form {
+        padding: 0 30px;
+    }
+    .register__form-subheading {
+        font-size: 14px;
+    }
+    .register__form-heading {
+        font-size: 20px;
+    }
+    .register__form input {
+        width: 100%;
+    }
+    .register__form .btn {
+        width: 100%;
+    }
 }
