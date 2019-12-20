@@ -27,16 +27,23 @@ $(document).ready(function(){
       const windowHeight = window.innerHeight;
       [...$('.animated-headline')].forEach((item,index)=>{
         const top = item.getBoundingClientRect().top;
-        console.log(`${index}: ${top}`);
         if (top < windowHeight) {
           const diff = windowHeight - top;
           const progress = diff*2/windowHeight;
           const percent = progress > 1 ? 1 : progress;
-          item.style.transform = `translateY(${100 - percent*100}px)`;
+          item.style.transform = `translateY(${(1-Math.sin(Math.acos(1-percent)))*100}px)`;
           item.style.opacity = `${percent}`;
         }
       })
-      console.log(window.innerHeight);
+      // console.log($('.statistics')[0].getBoundingClientRect.top);
+      if ($('.statistics')[0].getBoundingClientRect().top < windowHeight) {
+        [...$(".statistic__item")].forEach((item,index)=>{
+          setTimeout(()=>{
+            item.classList.remove('hidden');
+          },(index+1)*500);
+        })
+      }
+      
     })
     $('.toggle-menu').click(function(){
       $(this).toggleClass('active');

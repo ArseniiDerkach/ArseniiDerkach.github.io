@@ -90,6 +90,7 @@ section {
     }
 }
 
+  
 @media (max-width: 1199px) {
     .container {
         width: 992px;
@@ -193,9 +194,9 @@ section {
     bottom: -10px;
 }
 
+
 .promo {
-    margin-top: 133px;
-    padding-top: 60px;
+    padding-top: 193px;
     background-image: url(../img/promo-bg.jpg);
     background-size: cover;
     background-position: center bottom;
@@ -315,6 +316,11 @@ section {
     align-items: flex-end;
     color: #fff;
     padding-bottom: 16px;
+    opacity: 1;
+    transition: all .4s linear;
+}
+.statistic__item.hidden {
+    opacity: 0;
 }
 
 .statistic__item:nth-child(n+4) {
@@ -406,6 +412,166 @@ section {
     background-position: top right;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.history-diagram-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.history-diagram-item:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../img/diagram-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    opacity: 0.7;
+}
+
+.diagram__left-side,
+.diagram__right-side {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.diagram__detail {
+    padding: 50px 0 50px 50px;
+}
+
+.diagram__detail-headline {
+    font-size: 30px;
+    color: #fff;
+}
+.diagram__detail-value {
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+} 
+
+.diagram__detail-value.volume {
+    color: #fcb040;
+}
+
+.diagram__detail-value.total-assets {
+    color: #838383;
+}
+
+.diagram__detail-value.transactions {
+    color: #5bb9ea;
+}
+
+.bankroll-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 9;
+}
+.bankroll-headline {
+    font-size: 30px;
+    line-height: 30px;
+    height: 30px;
+    margin-bottom: 40px;
+}
+
+.bankroll-value {
+    font-size: 100px;
+    line-height: 100px;
+    height: 100px;
+}
+
+.diagram__image {
+    flex: 0 0 700px;
+    width: 700px;
+    height: 700px;
+    box-shadow: inset 4.792px -3.611px 24px 0px rgba(24, 23, 24, 0.24);
+    border-radius: 50%;
+    position: relative;
+}
+.diagram__image::after,
+.diagram__image::before {
+    content: url(../img/diagram-prev.png);
+    position: absolute;
+    opacity: 0.5;
+    top: 50%;
+}
+
+.diagram__image::before {
+    left: 0;
+    transform: translateX(-100%);
+}
+.diagram__image::after {
+    right: 0;
+    transform: translateX(100%);
+}
+
+.c100.diargram-circle .bar,
+.c100.diargram-circle .fill {
+    border-width: 30px;
+    width: calc(1em - 60px);
+    height: calc(1em - 60px);
+}
+.c100.diargram-circle {
+    background-color: transparent;
+}
+.c100.diargram-circle:after {
+    background-color: transparent;
+}
+
+.diargram-circle.volume-circle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 660px;
+}
+
+.diargram-circle.volume-circle .bar,
+.diargram-circle.volume-circle .fill {
+    border-color: #fcb040;
+}
+
+.diargram-circle.transaction-circle {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 600px;
+}
+
+.diargram-circle.transaction-circle .bar,
+.diargram-circle.transaction-circle .fill {
+    border-color: #00bff3;
+}
+
+.diargram-circle.asset-circle {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    font-size: 540px;
+}
+
+.diargram-circle.asset-circle .bar,
+.diargram-circle.asset-circle .fill {
+    border-color: #898989;
+}
+
+
+    
+
+.diagram__check-btn {
+    flex: 1 0 100%;
+    text-align: center;
 }
 
 .container_history {
@@ -725,6 +891,24 @@ section {
     background-position: -137px 0;
 }
 
+
+@media (max-width: 1510px) {
+    .statistics__current-text {
+        flex-basis: 40%
+    }
+    .statistic__item {
+        flex-basis: calc(30% - 30px);
+    }
+    .statistic__item-number {
+        font-size: 60px;
+        line-height: 40px;
+        width: 70px;
+    }
+    .statitic__item-text {
+        font-size: 26px;
+        line-height: 20px;
+    }
+}
 
 @media (max-width: 1199px) {
     .header__menu-item a {
