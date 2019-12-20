@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  let counter = false;
     setTimeout(function(){
       $(".preloader").removeClass('preloader');
     },400);
@@ -35,13 +36,60 @@ $(document).ready(function(){
           item.style.opacity = `${percent}`;
         }
       })
-      // console.log($('.statistics')[0].getBoundingClientRect.top);
+
+
       if ($('.statistics')[0].getBoundingClientRect().top < windowHeight) {
         [...$(".statistic__item")].forEach((item,index)=>{
           setTimeout(()=>{
             item.classList.remove('hidden');
           },(index+1)*500);
         })
+      }
+
+      if (($('.history-diagram')[0].getBoundingClientRect().top < windowHeight) && (!counter)) {
+        counter = true
+        $('.countable').each(function () {
+          var $this = $(this);
+          // str.match(/.{1,3}/g)
+          if ($this.hasClass('volume')) {
+            jQuery({ Counter: 0 }).animate({ Counter: ($this.text().slice(1).split(' ').join('')) }, {
+              duration: 1000,
+              easing: 'swing',
+              step: function () {
+                console.log((Math.ceil(this.Counter)+'').match(/.{1,3}/g).join(' '));
+                $this.text(`$${(Math.ceil(this.Counter)+'').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`);
+              }
+            });
+          } else
+          if ($this.hasClass('transactions')) {
+            jQuery({ Counter: 0 }).animate({ Counter: ($this.text().split(' ').join('')) }, {
+              duration: 1000,
+              easing: 'swing',
+              step: function () {
+                $this.text(`${(Math.ceil(this.Counter)+'').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`);
+              }
+            });
+          } else
+          if ($this.hasClass('bankroll-value')) {
+            jQuery({ Counter: 0 }).animate({ Counter: (parseInt($this.text())) }, {
+              duration: 1000,
+              easing: 'swing',
+              step: function () {
+                $this.text(`${(Math.ceil(this.Counter))}%`);
+              }
+            });
+          }
+          else {
+            jQuery({ Counter: 0 }).animate({ Counter: $this.text() }, {
+              duration: 1000,
+              easing: 'swing',
+              step: function () {
+                $this.text(Math.ceil(this.Counter));
+              }
+            });
+          }
+          
+        });
       }
       
     })
