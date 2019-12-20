@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="preloader">
     <header class="header">
         <div class="container container_header">
             <img class="header__logo" src="img/logo.png" alt="Robotrade" />
@@ -37,6 +37,10 @@
                     <a href="#" class="header__menu-item-link">sign up</a>
                 </li>
             </ul>
+            <div class="toggle-menu">
+                <div class="toggle-menu-inner"></div>
+            </div>
+            <a href="#" class="header-sign-up-link">sign up</a>
         </div>
     </header>
     <section class="promo">
@@ -46,10 +50,10 @@
                     I am triangle algorythm bot <br><span class="text text_orange">that makes profit</span><br> for you
                 </div>
                 <div class="promo__sign-up hidden-md">
-                    <div class="promo__sign-up-heading">Create your Account to unlock all the features</div>
-                    <form action="#" class="promo__form">
-                        <input type="email" placeholder="E-mail" class="email">
-                        <a class="btn btn-primary" href="#">Create account</a>
+                    <div class="promo__sign-up-heading loading">Create your Account to unlock all the features</div>
+                    <form action="#" class="promo__form ">
+                        <input type="email" placeholder="E-mail" class="email loading">
+                        <a class="btn btn-primary loading" href="#">Create account</a>
                     </form>
                 </div>
             </div>
@@ -70,7 +74,7 @@
     </section>
     <section class="statistics">
         <div class="container container_statistics">
-            <div class="section__headline">
+            <div class="section__headline animated-headline">
                 How it works
             </div>
             <div class="statistics__items">
@@ -112,7 +116,7 @@
     </section>
     <section class="history-diagram">
         <div class="container container_history">
-            <div class="section__headline">
+            <div class="section__headline animated-headline">
                 Bot statistics
             </div>
         </div>
@@ -129,7 +133,7 @@
         <div class="container">
             <div class="history-table__item">
                 <div class="history__column">
-                    <div class="history__heading">Deposit history</div>
+                    <div class="history__heading animated-headline">Deposit history</div>
                     <ul class="history__list deposit-history">
                         <li class="history__list-item">
                             <a href="#" class="history__list-link">
@@ -164,7 +168,7 @@
                     </ul>
                 </div>
                 <div class="history__column">
-                    <div class="history__heading">Cashout history</div>
+                    <div class="history__heading animated-headline">Cashout history</div>
                     <ul class="history__list cashout-history">
                         <li class="history__list-item">
                             <a href="#" class="history__list-link">
@@ -204,7 +208,7 @@
     </section>
     <section class="trade-history-graph">
         <div class="container container_graph">
-            <div class="section__headline">
+            <div class="section__headline animated-headline">
                 Trade history
             </div>
             <div class="graph-slider-wrapper">
@@ -227,7 +231,7 @@
     </section>
     <section class="register">
         <div class="container register_container">
-            <div class="section__headline">Registration</div>
+            <div class="section__headline animated-headline">Registration</div>
             <div class="register__form">
                 <div class="register__form-subheading">Create your Account to unlock all the features</div>
                 <div class="register__form-heading">Register now<br> and get all the features</div>

@@ -125,6 +125,10 @@ section {
     flex: 0 0 100%;
 }
 
+.preloader .header {
+    transform: translateY(-100%);
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -132,6 +136,8 @@ section {
     height: 133px;
     background-color: #fff;
     width: 100%;
+    transform: translateY(0);
+    transition: transform .4s linear;
 }
 
 .container_header {
@@ -147,6 +153,14 @@ section {
     padding: 0;
     margin: 0;
     list-style: none;
+}
+
+.toggle-menu {
+    display: none;
+}
+
+.header-sign-up-link {
+    display: none;
 }
 
 .header__menu-item {
@@ -203,17 +217,29 @@ section {
     justify-content: space-between;
 }
 
+.preloader .promo__headline {
+    transform: translateX(-150%);
+}
+
 .promo__headline {
     font-size: 72px;
     font-weight: bold;
     color: #fff;
+    transform: translateX(0);
+    transition: transform 1s cubic-bezier(.11,.47,1,1.74);
 }
 
 .promo__sign-up {
     padding-bottom: 70px;
 }
 
+.promo__sign-up-heading.loading {
+    opacity: 0;
+}
+
 .promo__sign-up-heading {
+    opacity: 1;
+    transition: opacity .5s linear;
     font-size: 25px;
     color: #fff;
     padding-bottom: 60px;
@@ -222,8 +248,12 @@ section {
 .promo__form {
     width: 460px;
 }
-
+.promo__form .email.loading {
+    opacity: 0;
+}
 .promo__form .email {
+    opacity: 1;
+    transition: opacity .5s linear;
     width: 100%;
     height: 60px;
     line-height: 60px;
@@ -231,8 +261,12 @@ section {
     padding: 0 25px;
     margin-bottom: 30px;
 }
-
+.promo__form .btn.loading {
+    opacity: 0;
+}
 .promo__form .btn {
+    opacity: 1;
+    transition: opacity .5s linear;
     width: 460px;
 }
 
@@ -766,9 +800,114 @@ section {
 
 @media(max-width: 991px) {
     
+    .header {
+        height: 60px;
+        padding: 0 10px;
+    }
+    .header__logo {
+        width: 200px;
+    }
     .header__menu {
         display: none;
     }
+    .container_header {
+        position: relative;
+        background-color: #fff;
+    }
+    .header__menu {
+        display: block;
+        position: absolute;
+        top: 0px;
+        width: 100vw;
+        left: -10px;
+        background-color: #fff;
+        z-index: -1;
+        text-align: center;
+        transition: all .4s linear;
+        transform: translateY(-100%);
+    }
+    .header__menu.active {
+        top: 60px;
+        transform: translateY(0);
+    }
+    .header__menu-item {
+        margin: 0;
+        height: 30px;
+    }
+    .header__menu-item:hover a {
+        text-decoration: underline;
+    }
+    .header__menu-item:hover:after {
+        display: none;
+    }
+    .container_header {
+        align-items: center;
+        height: 60px;
+        padding: 0;
+    }
+    .toggle-menu {
+        display: inline-block;
+        width: 21px;
+        height: 11px;
+        position: relative;
+        margin-top: 7px;
+    }
+    .toggle-menu-inner,
+    .toggle-menu-inner:before,
+    .toggle-menu-inner:after {
+        position: absolute;
+        width: 21px;
+        height: 1px;
+        transition-timing-function: ease;
+        transition-duration: .15s;
+        transition-property: transform;
+        background-color: #1c908e;
+    }
+    .toggle-menu-inner {
+        top: 50%;
+        display: block;
+        margin-top: -2px;
+        transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+        transition-duration: 75ms;
+    }
+    .toggle-menu-inner:before {
+        content: '';
+        top: -4px;
+        transition: top 75ms ease .12s,opacity 75ms ease;
+    }
+    .toggle-menu-inner:after {
+        content: '';
+        bottom: -4px;
+        transition: bottom 75ms ease .12s,transform 75ms cubic-bezier(.55,.055,.675,.19);
+    }
+
+    .toggle-menu.active .toggle-menu-inner {
+        transition-delay: .12s;
+        transition-timing-function: cubic-bezier(.215,.61,.355,1);
+        transform: rotate(45deg);
+    }
+
+    .toggle-menu.active .toggle-menu-inner:before {
+        top: 0;
+        transition: top 75ms ease,opacity 75ms ease .12s;
+        opacity: 0;
+    }
+
+    .toggle-menu.active .toggle-menu-inner:after {
+        bottom: 0;
+        transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
+        transform: rotate(-90deg);
+    }
+
+    .header-sign-up-link {
+        display: block;
+        color: #209391;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-decoration: none;
+        margin-top: 4px;
+    }
+    
     .section__headline {
         text-align: center;
         font-size: 42px;
@@ -852,6 +991,9 @@ section {
 }
 
 @media (max-width: 479px) {
+    .header__logo {
+        width: 100px;
+    }
     .promo__headline {
         font-size: 25px;
     }
