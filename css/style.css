@@ -33,10 +33,29 @@
     }
   }
 
+
+  
+  @keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    10% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+  }
 body {
     background-color: #17539c;
     font-family: "Roboto", Arial, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.2;
 }
 
@@ -45,7 +64,7 @@ section {
     overflow: hidden;
 }
 .container {
-    width: 1510px;
+    width: 1200px;
     margin: 0 auto;
     display: flex;
     position: relative;
@@ -54,11 +73,11 @@ section {
 .btn {
     text-decoration: none;
     color: #fff;
-    font-size: 25px;
+    font-size: 20px;
     text-transform: uppercase;
-    height: 60px;
-    line-height: 60px;
-    width: 460px;
+    height: 48px;
+    line-height: 48px;
+    width: 370px;
     text-align: center;
     display: inline-block;
     background-color: #a03da0;
@@ -83,13 +102,6 @@ section {
 .visible-md {
     display: none;
 }
-
-@media (max-width: 1510px) {
-    .container {
-        width: 1200px;
-    }
-}
-
   
 @media (max-width: 1199px) {
     .container {
@@ -119,7 +131,7 @@ section {
 }
 
 .section__headline {
-    font-size: 60px;
+    font-size: 48px;
     font-weight: bold;
     color: #fff;
     text-transform: uppercase;
@@ -134,7 +146,7 @@ section {
     position: fixed;
     top: 0;
     z-index: 999;
-    height: 133px;
+    height: 100px;
     background-color: #fff;
     width: 100%;
     transform: translateY(0);
@@ -142,9 +154,9 @@ section {
 }
 
 .container_header {
-    height: 133px;
+    height: 100px;
     display: flex;
-    padding-bottom: 44px;
+    padding-bottom: 30px;
     align-items: flex-end;
     justify-content: space-between;
 }
@@ -165,7 +177,7 @@ section {
 }
 
 .header__menu-item {
-    margin-right: 30px;
+    margin-right: 24px;
     position: relative;
 }
 
@@ -174,7 +186,7 @@ section {
 }
 
 .header__menu-item a {
-    font-size: 18px;
+    font-size: 16px;
     color: #000;
     text-transform: uppercase;
     text-decoration: none;
@@ -196,15 +208,15 @@ section {
 
 
 .promo {
-    padding-top: 193px;
+    padding-top: 154px;
     background-image: url(../img/promo-bg.jpg);
     background-size: cover;
     background-position: center bottom;
-    margin-bottom: 300px;
+    margin-bottom: 240px;
 }
 
 .promo__spinner {
-    height: 720px;
+    height: 576px;
 }
 
 .promo__spinner img {
@@ -223,7 +235,7 @@ section {
 }
 
 .promo__headline {
-    font-size: 72px;
+    font-size: 54px;
     font-weight: bold;
     color: #fff;
     transform: translateX(0);
@@ -231,7 +243,7 @@ section {
 }
 
 .promo__sign-up {
-    padding-bottom: 70px;
+    padding-bottom: 55px;
 }
 
 .promo__sign-up-heading.loading {
@@ -241,13 +253,13 @@ section {
 .promo__sign-up-heading {
     opacity: 1;
     transition: opacity .5s linear;
-    font-size: 25px;
+    font-size: 20px;
     color: #fff;
-    padding-bottom: 60px;
+    padding-bottom: 48px;
 }
 
 .promo__form {
-    width: 460px;
+    width: 360px;
 }
 .promo__form .email.loading {
     opacity: 0;
@@ -256,11 +268,11 @@ section {
     opacity: 1;
     transition: opacity .5s linear;
     width: 100%;
-    height: 60px;
-    line-height: 60px;
-    font-size: 25px;
-    padding: 0 25px;
-    margin-bottom: 30px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 20px;
+    padding: 0 20px;
+    margin-bottom: 24px;
 }
 .promo__form .btn.loading {
     opacity: 0;
@@ -268,13 +280,13 @@ section {
 .promo__form .btn {
     opacity: 1;
     transition: opacity .5s linear;
-    width: 460px;
+    width: 360px;
 }
 
 .statistics {
-    height: 990px;
-    margin-top: -300px;
-    padding-top: 180px;
+    height: 790px;
+    margin-top: -240px;
+    padding-top: 144px;
     background-image: url(../img/whale+water.jpg);
     background-size: cover;
     background-position: center top;
@@ -294,28 +306,30 @@ section {
     flex-wrap: wrap;
     justify-content: flex-end;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .statistics__current-text {
     flex: 0 0 50%;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .statistics__current-text p{
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .statistic__item {
     flex: 0 0 calc(25% - 30px);
-    height: 200px;
-    margin-left: 30px;
-    margin-bottom: 40px;
+    height: 160px;
+    margin-left: 25px;
+    margin-bottom: 30px;
     position: relative;
     display: flex;
     align-items: flex-end;
     color: #fff;
-    padding-bottom: 16px;
+    padding-bottom: 14px;
     opacity: 1;
     transition: all .4s linear;
 }
@@ -365,11 +379,11 @@ section {
 
 .statistic__item-number {
     position: relative;
-    font-size: 80px;
-    line-height: 60px;
+    font-size: 60px;
+    line-height: 48px;
     width: 100px;
     padding-left: 10px;
-    transform: translateX(-30px);
+    transform: translateX(-24px);
     transition: all .4s linear;
 }
 
@@ -377,16 +391,20 @@ section {
     transform: translateX(0);
 }
 .statitic__item-text {
-    font-size: 36px;
-    line-height: 31px;
+    font-size: 20px;
+    line-height: 16px;
     text-transform: uppercase;
     position: relative;
-    padding-left: 10px;
+    padding-left: 8px;
 }
 
 .triangle-item {
     position: absolute;
     transform-origin: center;
+    
+}
+
+.triangle-sm {
     -webkit-animation: rotating 10s linear infinite;
     -moz-animation: rotating 10s linear infinite;
     -ms-animation: rotating 10s linear infinite;
@@ -395,20 +413,30 @@ section {
 }
 
 .triangle-lg {
-    bottom: -260px;
-    left: -135px;
+    -webkit-animation: rotating 20s linear infinite;
+    -moz-animation: rotating 20s linear infinite;
+    -ms-animation: rotating 20s linear infinite;
+    -o-animation: rotating 20s linear infinite;
+    animation: rotating 20s linear infinite;
 }
 
-.triangle-sm {
-    bottom: -176px;
-    left: -6px;
+.statistics .triangle-lg {
+    bottom: -208px;
+    left: -108px;
+    z-index: 0;
+}
+
+.statistics .triangle-sm {
+    bottom: -141px;
+    left: -5px;
+    z-index: 0;
 }
 
 .history-diagram {
     position: relative;
     background-image: url(../img/how-it-works.jpg);
-    padding-top: 100px;
-    padding-bottom: 60px;
+    padding-top: 80px;
+    padding-bottom: 48px;
     background-position: top right;
     background-size: cover;
     background-repeat: no-repeat;
@@ -438,22 +466,22 @@ section {
 
 .diagram__left-side,
 .diagram__right-side {
-    flex: 1 0 auto;
+    flex: 1 0 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .diagram__detail {
-    padding: 50px 0 50px 50px;
+    padding: 40px 0;
 }
 
 .diagram__detail-headline {
-    font-size: 30px;
+    font-size: 24px;
     color: #fff;
 }
 .diagram__detail-value {
-    font-size: 60px;
+    font-size: 48px;
     font-weight: bold;
     color: #fff;
 } 
@@ -480,22 +508,22 @@ section {
     z-index: 9;
 }
 .bankroll-headline {
-    font-size: 30px;
-    line-height: 30px;
-    height: 30px;
-    margin-bottom: 40px;
+    font-size: 24px;
+    line-height: 24px;
+    height: 24px;
+    margin-bottom: 30px;
 }
 
 .bankroll-value {
-    font-size: 100px;
-    line-height: 100px;
-    height: 100px;
+    font-size: 80px;
+    line-height: 80px;
+    height: 80px;
 }
 
 .diagram__image {
-    flex: 0 0 700px;
-    width: 700px;
-    height: 700px;
+    flex: 0 0 560px;
+    width: 560px;
+    height: 560px;
     box-shadow: inset 4.792px -3.611px 24px 0px rgba(24, 23, 24, 0.24);
     border-radius: 50%;
     position: relative;
@@ -519,9 +547,9 @@ section {
 
 .c100.diargram-circle .bar,
 .c100.diargram-circle .fill {
-    border-width: 30px;
-    width: calc(1em - 60px);
-    height: calc(1em - 60px);
+    border-width: 25px;
+    width: calc(1em - 50px);
+    height: calc(1em - 50px);
 }
 .c100.diargram-circle {
     background-color: transparent;
@@ -534,7 +562,7 @@ section {
     position: absolute;
     top: 20px;
     left: 20px;
-    font-size: 660px;
+    font-size: 520px;
 }
 
 .diargram-circle.volume-circle .bar,
@@ -544,9 +572,9 @@ section {
 
 .diargram-circle.transaction-circle {
     position: absolute;
-    top: 50px;
-    left: 50px;
-    font-size: 600px;
+    top: 45px;
+    left: 45px;
+    font-size: 470px;
 }
 
 .diargram-circle.transaction-circle .bar,
@@ -556,9 +584,9 @@ section {
 
 .diargram-circle.asset-circle {
     position: absolute;
-    top: 80px;
-    left: 80px;
-    font-size: 540px;
+    top: 70px;
+    left: 70px;
+    font-size: 420px;
 }
 
 .diargram-circle.asset-circle .bar,
@@ -583,7 +611,7 @@ section {
     width: 100%;
 }
 .diagram__check-btn {
-    margin-top: 25px;
+    margin-top: 20px;
     text-align: center;
 }
 
@@ -592,7 +620,7 @@ section {
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
-    padding-top: 130px;
+    padding-top: 104px;
     padding-bottom: 100px;
 }
 
@@ -605,28 +633,28 @@ section {
 
 .history__column {
     flex: 0 0 50%;
-    padding: 0 50px;
-    margin-bottom: 100px;
+    padding: 0 40px;
+    margin-bottom: 80px;
 }
 
 .history__heading {
-    font-size: 60px;
+    font-size: 48px;
     font-weight: bold;
     color: #fff;
     text-transform: uppercase;
-    margin-bottom: 75px;
+    margin-bottom: 60px;
 }
 
 .history__list {
     list-style: none;
-    padding-left: 40px;
+    padding-left: 30px;
 }
 
 .history__list-item {
-    margin-bottom: 12px;
-    height: 55px;
-    line-height: 55px;
-    padding: 0 40px;
+    margin-bottom: 10px;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 30px;
 }
 
 .history__list-item:nth-child(odd) {
@@ -635,10 +663,10 @@ section {
 
 .history__list-link {
     display: flex;
-    height: 55px;
+    height: 44px;
     text-decoration: none;
     color: #fff;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .history__list-link:hover {
@@ -647,11 +675,11 @@ section {
 }
 
 .history__item-value {
-    flex: 0 0 130px;
+    flex: 0 0 104px;
 }
 
 .history__item-text {
-    padding-left: 20px;
+    padding-left: 15px;
 }
 
 .trade-history-graph {
@@ -667,21 +695,21 @@ section {
 }
 
 .container_graph .section__headline {
-    margin-bottom: 75px;
+    margin-bottom: 60px;
 }
 
 .graph-slider-wrapper {
-    width: calc(100% - 190px);
+    width: calc(100% - 150px);
     margin: 0 auto;
     
 }
 
 .graph-slider {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .graph__item {
-    padding: 0 10px;
+    padding: 0 8px;
 }
 
 .graph__item img {
@@ -694,19 +722,19 @@ section {
 
 .graph-slider .slick-dots {
     position: absolute;
-    top: -40px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     list-style: none;
-    width: 115px;
+    width: 90px;
     justify-content: space-between; 
 }
 
 .graph-slider .slick-dots button {
     font-size: 0;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     border: 2px solid #fff;
     outline: none;
@@ -725,8 +753,8 @@ section {
     font-size: 0;
     transform: translateY(-50%);
     background-color: transparent;
-    width: 46px;
-    height: 89px;
+    width: 36px;
+    height: 72px;
     background-size: cover;
     background-repeat: no-repeat;
     border: none;
@@ -736,15 +764,15 @@ section {
 
 .graph-slider .slick-prev {
     transform: translateY(-50%) rotate(180deg);
-    left: -90px;
+    left: -72px;
 }
 
 .graph-slider .slick-next {
-    right: -90px;
+    right: -72px;
 }
 
 .graph {
-    margin: 30px 0;
+    margin: 24px 0;
     overflow-x: scroll;
 }
 /* 
@@ -755,7 +783,7 @@ section {
 
 
 .register {
-    padding-top: 130px;
+    padding-top: 100px;
     background-image: url(../img/footer-bg.png);
     background-size: contain;
     background-position: bottom right;
@@ -764,66 +792,136 @@ section {
 }
 
 .robot {
+    position: relative;
+}
+
+.robot-eye {
     position: absolute;
-    top: 100px;
-    left: -100px;
+    width: 40px;
+    top: 167px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.32);
+    border-radius: 50%;
+    animation: blink 10s linear infinite;
 }
 
-.triangle-1 {
-    top: -45px;
-    right: -90px;
+.eye-left {
+    left: 136px;
 }
 
-.triangle-2 {
-    top: 150px;
-    right: -135px;
+.eye-right {
+    left: 236px;
+}
+
+.robot-mouth {
+    position: absolute;
+    width: 177px;
+    left: 117px;
+    bottom: 58px;
+    display: flex;
+    align-items: flex-end;
+    max-height: 80px;
+    overflow-y: hidden;
+}
+
+.robot-tooth {
+    width: 15px;
+    margin-right: 12px;
+    background-color: rgba(255,255,255,0.32);
+}
+.robot-tooth:last-child {
+    margin-right: 0;
+}
+
+.robot-tooth:nth-child(1) {
+    height: 75px;
+}
+.robot-tooth:nth-child(2) {
+    height: 45px;
+}
+.robot-tooth:nth-child(3) {
+    height: 58px;
+}
+.robot-tooth:nth-child(4) {
+    height: 39px;
+}
+.robot-tooth:nth-child(5) {
+    height: 59px;
+}
+.robot-tooth:nth-child(6) {
+    height: 45px;
+}
+.robot-tooth:nth-child(7) {
+    height: 75px;
+}
+
+
+.register .triangle-lg {
+    top: -36px;
+    right: -72px;
+    z-index: 0;
+}
+
+.register .triangle-sm {
+    top: 120px;
+    right: -108px;
+    z-index: 0;
 }
 
 .register_container {
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .register__form {
-    width: 700px;
-    margin: 0 auto;
+    width: 560px;
+    margin-left: 40px;
     color: #fff;
     display: flex;
     flex-direction: column;
-    margin-top: 90px;
-    margin-bottom: 150px;
+    margin-top: 70px;
+    margin-bottom: 120px;
+    position: relative;
+    z-index: 1;
 }
 
 .register__form-subheading {
-    font-size: 30px;
-    margin-bottom: 50px;
+    font-size: 24px;
+    margin-bottom: 40px;
 }
 
 .register__form-heading {
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 60px;
+    margin-bottom: 48px;
 }
 
 .register__form input {
-    width: 460px;
-    height: 60px;
-    padding: 0 25px;
-    line-height: 60px;
-    font-size: 25px;
-    margin-bottom: 30px;
+    width: 370px;
+    height: 48px;
+    padding: 0 20px;
+    line-height: 48px;
+    font-size: 20px;
+    margin-bottom: 25px;
 }
 
 .register__form .btn {
-    width: 460px;
+    width: 370px;
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
 }
 
 .footer__menu {
     display: flex;
     align-items: center;
-    padding-bottom: 28px;
+    padding-bottom: 22px;
     border-bottom: 2px solid #fff;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
 .footer__menu-items {
@@ -834,7 +932,7 @@ section {
 }
 
 .footer__menu-items li a {
-    font-size: 18px;
+    font-size: 16px;
     color: #fff;
     text-transform: uppercase;
     text-decoration: none;
@@ -846,9 +944,9 @@ section {
 }
 
 .footer__logo {
-    flex: 0 0 260px;
+    flex: 0 0 200px;
     text-align: center;
-    margin: 0 50px;
+    margin: 0 40px;
 }
 
 .footer__logo img {
@@ -857,26 +955,26 @@ section {
 
 .footer__info {
     display: flex;
-    width: 990px;
+    width: 790px;
     margin: 0 auto;
     justify-content: space-between;
-    height: 140px;
+    height: 110px;
     color: #fff;
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 16px;
+    line-height: 24px;
     
 }
 
 .footer__social {
-    width: 200px;
+    width: 160px;
     display: flex;
     justify-content: space-between;
 }
 
 .social-icon {
     display: block;
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     background-image: url(../img/icons-social.png);
 }
 .icon_fb {
@@ -889,28 +987,6 @@ section {
 
 .icon_ig {
     background-position: -137px 0;
-}
-
-
-@media (max-width: 1510px) {
-    .statistics__current-text {
-        flex-basis: 40%
-    }
-    .statistic__item {
-        flex-basis: calc(30% - 30px);
-    }
-    .statistic__item-number {
-        font-size: 60px;
-        line-height: 40px;
-        width: 70px;
-    }
-    .statitic__item-text {
-        font-size: 26px;
-        line-height: 20px;
-    }
-    .history__list-link {
-        font-size: 20px;
-    }
 }
 
 @media (max-width: 1199px) {
@@ -941,6 +1017,23 @@ section {
         font-size: 26px;
         line-height: 20px;
     }
+    .diagram__detail-value {
+        font-size: 32px;
+    }
+    .diagram__image {
+        width: 500px;
+        height: 500px;
+        flex-basis: 500px;
+    }
+    .diargram-circle.volume-circle {
+        font-size: 460px;
+    }
+    .diargram-circle.transaction-circle {
+        font-size: 410px;
+    }
+    .diargram-circle.asset-circle {
+        font-size: 360px;
+    }
     .history__column {
         padding: 0 30px;
     }
@@ -951,7 +1044,7 @@ section {
         flex-basis: 100px;
     }
     .register__form {
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         text-align: center;
     }
     .register__form input {
@@ -969,13 +1062,23 @@ section {
         top: 0;
         text-align: center;
     }
-    .triangle-1 {
+    .register .triangle-sm {
         top: 650px;
         right: 0;
     }
-    .triangle-2 {
+    .register .triangle-2 {
         top: 650px;
         right: 0;
+    }
+    .register_container {
+        justify-content: center;
+        align-items: center;
+    }
+    .robot {
+        order: 1;
+    }
+    .footer {
+        order: 1;
     }
     .footer__menu {
         justify-content: center;
@@ -1140,6 +1243,31 @@ section {
     .statistic__item:hover {
         height: 150px;
     }
+    .diagram__image {
+        width: 450px;
+        height: 450px;
+        flex-basis: 450px;
+    }
+    .c100.diargram-circle .bar, .c100.diargram-circle .fill {
+        border-width: 15px;
+        width: calc(1em - 30px);
+        height: calc(1em - 30px);
+    }
+    .diargram-circle.volume-circle {
+        top: 20px;
+        left: 20px;
+        font-size: 410px;
+    }
+    .diargram-circle.transaction-circle {
+        top: 35px;
+        left: 35px;
+        font-size: 380px;
+    }
+    .diargram-circle.asset-circle {
+        top: 50px;
+        left: 50px;
+        font-size: 350px;
+    }
     .diagram__check-btn {
         width: 100%;
         padding: 0 30px;
@@ -1151,17 +1279,28 @@ section {
         font-size: 42px;
         text-align: center;
     }
-
+    .history-diagram-item .container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .diagram__left-side, .diagram__right-side {
+        flex-basis: 50%;
+        order: 1;
+        padding: 0 20px;
+    }
     .graph-slider .slick-arrow {
         width: 28px;
         height: 54px;
     }
+    
     .register__form {
         width: 100%;
-        margin-top: 40px;
+        margin-top: 10px;
+        margin: 10px 0 0;
     }
     .register__form-heading {
         order: 2;
+        margin-bottom: 0;
     }
     .register__form-subheading {
         font-size: 18px;
@@ -1214,6 +1353,35 @@ section {
     }
     .section__headline {
         font-size: 30px;
+    }
+    .bankroll-headline {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .bankroll-value {
+        font-size: 40px;
+        line-height: 1;
+        height: 40px;
+    }
+    .diagram__detail-headline {
+        font-size: 10px;
+    }
+    .diagram__detail-value {
+        font-size: 18px;
+    }
+    .diagram__image {
+        width: 290px;
+        height: 290px;
+        flex-basis: 290px;
+    }
+    .diargram-circle.volume-circle {
+        font-size: 250px;
+    }
+    .diargram-circle.transaction-circle {
+        font-size: 220px;
+    }
+    .diargram-circle.asset-circle {
+        font-size: 190px;
     }
     .history__column {
         padding: 0;
