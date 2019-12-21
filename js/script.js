@@ -154,19 +154,26 @@ $(document).ready(function(){
       },
     ]
     function updateTable(type) {
-      debugger;
-      // deposit-history
-      // cashout-history
-      const list = $(`.${type}-history`);
-      const items = [...list[0].querySelectorAll('.history__list-item')];
+      const list = $(`.${type}-history`)[0];
+      const items = [...list.querySelectorAll('.history__list-item')];
       const lastItem = items.pop();
       const newItem = lastItem.cloneNode(true);
       const newItemData = placeholderTableData.shift();
-      newItem.querySelector('.history__item-value').innerText = `$${newItemData.value}`;
-      newItem.querySelector('.history__item-date').innerText = `$${newItemData.date}`;
-      items.unshift(newItem);
+      setTimeout(()=>{
+        newItem.style.opacity = '0';
+      },100);
+      setTimeout(()=>{
+        newItem.querySelector('.history__item-value').innerText = `$${newItemData.value}`;
+        newItem.querySelector('.history__item-date').innerText = `$${newItemData.date}`;
+        list.insertBefore(newItem,items[0]);
+      },500);
+      setTimeout(()=>{
+        newItem.style.opacity = '1';
+        lastItem.parentElement.removeChild(lastItem);
+      },550);
     }
-    updateTable('deposit');
+    setInterval(()=>{placeholderTableData.length ? updateTable('deposit'): ''},2500);
+    setInterval(()=>{placeholderTableData.length ? updateTable('cashout'): ''},2500);
     setInterval(runRobot,100);
     $('.toggle-menu').click(function(){
       $(this).toggleClass('active');

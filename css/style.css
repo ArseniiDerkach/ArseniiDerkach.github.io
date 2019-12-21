@@ -648,6 +648,8 @@ section {
 .history__list {
     list-style: none;
     padding-left: 30px;
+    max-height: 270px;
+    overflow-y: hidden;
 }
 
 .history__list-item {
@@ -655,6 +657,7 @@ section {
     height: 44px;
     line-height: 44px;
     padding: 0 30px;
+    transition: all .4s linear;
 }
 
 .history__list-item:nth-child(odd) {
@@ -1247,6 +1250,7 @@ section {
         width: 450px;
         height: 450px;
         flex-basis: 450px;
+        margin: 0 30px;
     }
     .c100.diargram-circle .bar, .c100.diargram-circle .fill {
         border-width: 15px;
