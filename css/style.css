@@ -216,8 +216,81 @@ section {
 }
 
 .promo__spinner {
-    height: 576px;
+    flex-basis: 50%;
+    padding: 0 30px 30px;
+    position: relative;
 }
+
+.spinner__image {
+    transform-origin: 50% 59%;
+    transition: transform .5s linear;
+}
+
+.spinner__edge {
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+}
+
+.spinner__edge-text.hidden {
+    display: none;
+}
+
+.spinner__edge-question {
+    font-size: 80px;
+    line-height: 60px;
+}
+.spinner__edge-question.hidden {
+    display: none;
+}
+
+.spinner__edge_1 {
+    top: 19%;
+    left: 50%;
+    color: #00a79d;
+}
+.spinner__edge_2 {
+    bottom: 15%;
+    left: 19.5%;
+    color: #9b3a9b;
+}
+
+.spinner__edge_3 {
+    bottom: 15%;
+    right: 5%;
+    color: #fcb040;
+}
+
+.spinner__edge-currency {
+    font-size: 30px;
+}
+
+.spinner__last-profit {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 28px;
+}
+
+.spinner__last-profit-text {
+    color: #fff;
+}
+.spinner__last-profit-value {
+    font-weight: bold;
+}
+
+.spinner__last-profit.hidden {
+    display: none;
+}
+
 
 .promo__spinner img {
     width: 100%;
@@ -686,6 +759,7 @@ section {
 }
 
 .trade-history-graph {
+    padding-top: 50px;
     background-image: url(../img/graph-bg.png);
     background-size: cover;
     background-position: bottom center;
@@ -979,17 +1053,18 @@ section {
     width: 48px;
     height: 48px;
     background-image: url(../img/icons-social.png);
+    background-size: 157px;
 }
 .icon_fb {
     background-position: 0 0;
 }
 
 .icon_tw {
-    background-position: -67px 0;
+    background-position: -54px 0;
 }
 
 .icon_ig {
-    background-position: -137px 0;
+    background-position: -108px 0;
 }
 
 @media (max-width: 1199px) {

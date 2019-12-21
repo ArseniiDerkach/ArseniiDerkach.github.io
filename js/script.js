@@ -24,6 +24,85 @@ $(document).ready(function(){
             }
         ]
     });
+    const spinnerData1 = {
+      edge1 : {
+        value: 0.00001,
+        currency: 'BTC'
+      },
+      action12: 'Sell',
+      edge2 : {
+        value: 10.554,
+        currency: 'ETH'
+      },
+      action23: 'Buy',
+      edge3 : {
+        value: 0.00001,
+        currency: 'BTC'
+      },
+      action13: 'Sell',
+      profit: '0.0001'
+    }
+    const spinnerData2 = {
+      edge1 : {
+        value: 0.00002,
+        currency: 'BTC'
+      },
+      action12: 'Buy',
+      edge2 : {
+        value: 12.554,
+        currency: 'ETH'
+      },
+      action23: 'Sell',
+      edge3 : {
+        value: 0.00002,
+        currency: 'BTC'
+      },
+      action13: 'Buy',
+      profit: '0.1'
+    }
+
+    let currentSpinnerStep = 0;
+
+    function spinnerStep(data) {
+      const spinner = document.querySelector('.promo__spinner');
+      const edge1 = spinner.querySelector('.spinner__edge_1');
+      const edge2 = spinner.querySelector('.spinner__edge_2');
+      const edge3 = spinner.querySelector('.spinner__edge_3');
+      const edges = [edge1,edge2,edge3];
+      const action12 = spinner.querySelector('.spinner__action_1-2');
+      const action23 = spinner.querySelector('.spinner__action_2-3');
+      const action13 = spinner.querySelector('.spinner__action_1-3');
+      edges.forEach((item,index)=>{
+        setTimeout(()=>{
+          item.querySelector('.spinner__edge-question').classList.add('hidden');
+          setTimeout(()=>{
+            item.querySelector('.spinner__edge-value').innerText = data[`edge${index+1}`].value;
+            item.querySelector('.spinner__edge-currency').innerText = data[`edge${index+1}`].currency;
+            [].slice.call(item.querySelectorAll('.spinner__edge-text'),0).forEach(item=>{
+              item.classList.remove('hidden');
+            })
+            if (index === 2) {
+              spinner.querySelector('.spinner__last-profit-value').innerText = `+${data.profit}$`;
+              spinner.querySelector('.spinner__last-profit').classList.remove('hidden');
+            }
+          },400)
+        },1000*(index+1))
+      })
+      setTimeout(()=>{
+        currentSpinnerStep++;
+        [].slice.call(spinner.querySelectorAll('.spinner__edge-text'),0).forEach(item=>{
+          item.classList.add('hidden');
+        });
+        spinner.querySelector('.spinner__last-profit').classList.add('hidden');
+        spinner.querySelector('.spinner__image').style.transform = `rotate(${currentSpinnerStep*120}deg)`;
+        setTimeout(()=>{
+          [].slice.call(spinner.querySelectorAll('.spinner__edge-question'),0).forEach(item=>{
+            item.classList.remove('hidden');
+          })
+        },600)
+      },13000)
+    }
+    spinnerStep(spinnerData1);
     window.addEventListener('scroll',()=>{
       const windowHeight = window.innerHeight;
       [...$('.animated-headline')].forEach((item,index)=>{
@@ -43,7 +122,7 @@ $(document).ready(function(){
         [...$(".statistic__item")].forEach((item,index)=>{
           setTimeout(()=>{
             item.classList.remove('hidden');
-          },(index+1)*500);
+          },(index+1)*250);
         })
         const triangleSm = $('.statistics .triangle-sm');
         const triangleLg = $('.statistics .triangle-lg');
