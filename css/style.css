@@ -684,18 +684,18 @@ section {
     position: relative;
     font-size: 60px;
     line-height: 48px;
-    width: 100px;
+    width: 80px;
     padding-left: 10px;
     transform: translateX(-24px);
-    transition: all .4s linear;
+    transition: all .2s linear;
 }
 
 .statistic__item:hover .statistic__item-number {
     transform: translateX(0);
 }
 .statitic__item-text {
-    font-size: 20px;
-    line-height: 16px;
+    font-size: 28px;
+    line-height: 28px;
     text-transform: uppercase;
     position: relative;
     padding-left: 8px;
