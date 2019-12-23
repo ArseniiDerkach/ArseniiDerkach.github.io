@@ -397,14 +397,14 @@ buildChart();
         setTimeout(()=>{
           $(".diargram-circle.volume-circle").addClass('no-animation');
           $(".diargram-circle.volume-circle").addClass('p51');
-          $(".diargram-circle.volume-circle").removeClass('p50');
+          $(".diargram-circle.volume-circle").removeClass('p49');
         },1176);
         setTimeout(()=>{
           $(".diargram-circle.volume-circle").removeClass('p51');
           $(".diargram-circle.volume-circle").removeClass('no-animation');
           $(".diargram-circle.volume-circle").addClass('second-half');
           $(".diargram-circle.volume-circle").addClass('p85');
-        },1190)
+        },1200);
         $(".diargram-circle.transaction-circle").removeClass('p0')
         $(".diargram-circle.transaction-circle").addClass('p45')
         $(".diargram-circle.asset-circle").removeClass('p0')
