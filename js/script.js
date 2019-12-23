@@ -15,11 +15,11 @@ $(document).ready(function(){
     const values1 = [];
     const values2 = [];
 
-  const data2 = JSON.parse(await getData('http://localhost:5500/data.json'));
+  // const data2 = JSON.parse(await getData('http://localhost:5500/data.json'));
   const data = await getData('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2019-12-05');
-    data2.forEach(([time,value])=>{
-      values2.push(value);
-    })
+    // data2.forEach(([time,value])=>{
+    //   values2.push(value);
+    // })
     for (let key in data.bpi){
       if(data.bpi.hasOwnProperty(key)){
         times.push(moment(key, 'YYYY-MM-DD'));
