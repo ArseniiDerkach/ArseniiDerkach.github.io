@@ -8,6 +8,18 @@ const filterLabels = labels => [...new Set(labels)];
 
 
 $(document).ready(function(){
+
+  // smooth scroll 
+
+  $(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top - 100
+    }, 500);
+});
+
+// smooth scroll end
   // GRAPH
   const buildChart = async () => {
     const ctx = $('#graph');
@@ -379,7 +391,24 @@ buildChart();
       }
 
       if (($('.history-diagram-item')[0].getBoundingClientRect().top < windowHeight) && (!counter)) {
-        counter = true
+        counter = true;
+        $(".diargram-circle.volume-circle").removeClass('p0')
+        $(".diargram-circle.volume-circle").addClass('p50');
+        setTimeout(()=>{
+          $(".diargram-circle.volume-circle").addClass('no-animation');
+          $(".diargram-circle.volume-circle").addClass('p51');
+          $(".diargram-circle.volume-circle").removeClass('p50');
+        },1176);
+        setTimeout(()=>{
+          $(".diargram-circle.volume-circle").removeClass('p51');
+          $(".diargram-circle.volume-circle").removeClass('no-animation');
+          $(".diargram-circle.volume-circle").addClass('second-half');
+          $(".diargram-circle.volume-circle").addClass('p85');
+        },1190)
+        $(".diargram-circle.transaction-circle").removeClass('p0')
+        $(".diargram-circle.transaction-circle").addClass('p45')
+        $(".diargram-circle.asset-circle").removeClass('p0')
+        $(".diargram-circle.asset-circle").addClass('p30')
         $('.countable').each(function () {
           var $this = $(this);
           if ($this.hasClass('volume')) {
@@ -437,16 +466,7 @@ buildChart();
        }
       
     })
-  
 
-    function runRobot() {
-      const teeth = [...$('.robot-tooth')];
-      const heights = teeth.map(item=>$(item).data('tooth-height'));
-      teeth.forEach((item,i)=>{
-        const random = Math.random()*10 - 5;
-        $(item).height(heights[i]+random);
-      })
-    }
     const placeholderTableData = [
       {
         value: 120,
@@ -494,7 +514,6 @@ buildChart();
     }
     setInterval(()=>{placeholderTableData.length ? updateTable('deposit'): ''},2500);
     setInterval(()=>{placeholderTableData.length ? updateTable('cashout'): ''},2500);
-    setInterval(runRobot,100);
     $('.toggle-menu').click(function(){
       $(this).toggleClass('active');
       $('.header__menu').toggleClass('active');
