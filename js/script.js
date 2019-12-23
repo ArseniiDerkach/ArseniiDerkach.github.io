@@ -29,17 +29,17 @@ $(document).ready(function(){
         value: 0.00001,
         currency: 'BTC'
       },
-      action12: 'Sell',
+      action1: 'sell',
       edge2 : {
         value: 10.554,
         currency: 'ETH'
       },
-      action23: 'Buy',
+      action2: 'buy',
       edge3 : {
         value: 0.00001,
         currency: 'BTC'
       },
-      action13: 'Sell',
+      action3: 'sell',
       profit: '0.0001'
     }
     const spinnerData2 = {
@@ -47,17 +47,17 @@ $(document).ready(function(){
         value: 0.00002,
         currency: 'BTC'
       },
-      action12: 'Buy',
+      action1: 'buy',
       edge2 : {
         value: 12.554,
         currency: 'ETH'
       },
-      action23: 'Sell',
+      action2: 'sell',
       edge3 : {
         value: 0.00002,
         currency: 'BTC'
       },
-      action13: 'Buy',
+      action3: 'buy',
       profit: '0.1'
     }
 
@@ -65,44 +65,76 @@ $(document).ready(function(){
 
     function spinnerStep(data) {
       const spinner = document.querySelector('.promo__spinner');
-      const edge1 = spinner.querySelector('.spinner__edge_1');
-      const edge2 = spinner.querySelector('.spinner__edge_2');
-      const edge3 = spinner.querySelector('.spinner__edge_3');
-      const edges = [edge1,edge2,edge3];
-      const action12 = spinner.querySelector('.spinner__action_1-2');
-      const action23 = spinner.querySelector('.spinner__action_2-3');
-      const action13 = spinner.querySelector('.spinner__action_1-3');
-      edges.forEach((item,index)=>{
-        setTimeout(()=>{
-          item.querySelector('.spinner__edge-question').classList.add('hidden');
-          setTimeout(()=>{
-            item.querySelector('.spinner__edge-value').innerText = data[`edge${index+1}`].value;
-            item.querySelector('.spinner__edge-currency').innerText = data[`edge${index+1}`].currency;
-            [].slice.call(item.querySelectorAll('.spinner__edge-text'),0).forEach(item=>{
-              item.classList.remove('hidden');
-            })
-            if (index === 2) {
-              spinner.querySelector('.spinner__last-profit-value').innerText = `+${data.profit}$`;
-              spinner.querySelector('.spinner__last-profit').classList.remove('hidden');
-            }
-          },400)
-        },1000*(index+1))
+      const image = spinner.querySelector('.spinner__image');
+      const verticeTexts = [...spinner.querySelectorAll('.vertice-text')];
+      const vertices = [...spinner.querySelectorAll('.vertice')];
+      const edgeTexts = [...spinner.querySelectorAll('.edge')];
+      spinner.querySelector('.spinner__last-profit-value').innerText = `+${data.profit}$`;
+      verticeTexts.forEach((item,index)=>{
+        console.log(data[`edge${index+1}`]);
+        item.querySelector('.vertice-text-value').innerText = data[`edge${index+1}`].value;
+        item.querySelector('.vertice-text-currency').innerText = data[`edge${index+1}`].currency;
       })
+      edgeTexts.forEach((item,index)=>{
+        item.querySelector('.edge-text').innerText = data[`action${index+1}`];
+      }) 
+      vertices.forEach((item,index)=>{
+        setTimeout(()=>{
+          const question = item.querySelector('.vertice-text-question');
+          const data = item.querySelector('.vertice-text-data');
+          question.classList.add('hidden');
+          setTimeout(()=>{
+            data.classList.remove('hidden');
+          },400);
+        },1000*(index+1));
+      });
+      edgeTexts.forEach((item,index)=>{
+        setTimeout(()=>{
+          item.querySelector('.edge-text').classList.remove('hidden');
+        },1000*(index+1)+500);
+      });
+      setTimeout(()=>{
+        spinner.querySelector('.spinner__last-profit').classList.remove('hidden');
+      },3500);
       setTimeout(()=>{
         currentSpinnerStep++;
-        [].slice.call(spinner.querySelectorAll('.spinner__edge-text'),0).forEach(item=>{
-          item.classList.add('hidden');
-        });
-        spinner.querySelector('.spinner__last-profit').classList.add('hidden');
-        spinner.querySelector('.spinner__image').style.transform = `rotate(${currentSpinnerStep*120}deg)`;
         setTimeout(()=>{
-          [].slice.call(spinner.querySelectorAll('.spinner__edge-question'),0).forEach(item=>{
-            item.classList.remove('hidden');
+          vertices.forEach((item)=>{
+            const data = item.querySelector('.vertice-text-data');
+            data.classList.add('hidden');
+          });
+          edgeTexts.forEach((item)=>{
+            item.querySelector('.edge-text').classList.add('hidden');
           })
-        },600)
-      },13000)
-    }
+        },1000);
+        
+      setTimeout(()=>{
+        verticeTexts.forEach((item)=>{
+          item.style.transform = `rotate(-${120*currentSpinnerStep}deg)`;
+        })
+        image.style.transform = `rotate(${120*currentSpinnerStep}deg)`;
+        edgeTexts.forEach((item,index)=>{
+          item.querySelector('.edge-text').classList.remove('bottom');
+          if (index === ((1+currentSpinnerStep)%3)) {
+            item.querySelector('.edge-text').classList.add('bottom');
+          }
+        })
+      },1500);
+      setTimeout(()=>{
+        vertices.forEach((item)=>{
+            item.querySelector('.vertice-text-question').classList.remove('hidden');
+        });
+        edgeTexts.forEach((item,index)=>{
+          item.querySelector('.edge-text').classList.remove('hidden');
+          if (index === ((1+currentSpinnerStep)%3)) {
+            item.querySelector('.edge-text').classList.add('bottom');
+          }
+        })
+      },2000);
+    },10000);
+  }
     spinnerStep(spinnerData1);
+    // spinnerStep(spinnerData1);
     window.addEventListener('scroll',()=>{
       const windowHeight = window.innerHeight;
       [...$('.animated-headline')].forEach((item,index)=>{
