@@ -600,7 +600,7 @@ section {
 }
 
 .statistics__current-text {
-    flex: 0 0 50%;
+    flex: 1 0 50%;
     color: #fff;
     font-size: 14px;
 }
@@ -994,7 +994,6 @@ section {
 .graph-slider-wrapper {
     width: calc(100% - 150px);
     margin: 0 auto;
-    
 }
 
 .graph-slider {
@@ -1066,6 +1065,38 @@ section {
 
 .graph {
     margin: 24px 0;
+    width: 100%;
+}
+
+#cursor,
+#tooltip {
+  position: absolute;
+}
+
+#graph {
+    position: relative;
+}
+
+.graph-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.graph-button {
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px;
+    color: #9abfec;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.graph-button.active {
+    background-color: #fff;
+    color: #4086db;
+}
+
+.graph-container {
     overflow-x: scroll;
 }
 /* 

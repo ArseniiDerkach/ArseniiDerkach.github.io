@@ -1,4 +1,213 @@
+const getData = async (url) =>{
+  let response = await fetch(url);
+  let data = await response.json()
+  return data;
+}
+
+const filterLabels = labels => [...new Set(labels)];
+
+
 $(document).ready(function(){
+  // GRAPH
+  const buildChart = async () => {
+    const ctx = $('#graph');
+    const times = [];
+    const values1 = [];
+    const values2 = [];
+
+  const data2 = JSON.parse(await getData('http://localhost:5500/data.json'));
+  const data = await getData('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2019-12-05');
+    data2.forEach(([time,value])=>{
+      values2.push(value);
+    })
+    for (let key in data.bpi){
+      if(data.bpi.hasOwnProperty(key)){
+        times.push(moment(key, 'YYYY-MM-DD'));
+        values1.push(data.bpi[key]);
+      }
+   }
+
+   const timeFormat = 'YYYY';
+
+  const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [...times.slice(-3650)],
+        datasets: [{
+            label: 'BTC',
+            data: [...values1.slice(-3650)],
+            fill: false,
+            borderColor: 'rgba(196, 137, 50, 1)',
+            borderWidth: 0,
+            pointBorderColor: 'transparent',
+            pointBackgroundColor: 'transparent'
+        },
+      //   {
+      //     label: 'Robotrade',
+      //     data: values2,
+      //     fill: false,
+      //     borderColor: 'rgba(120, 45, 120, 1)',
+      //     borderWidth: 0,
+      //     pointBorderColor: 'transparent',
+      //     pointBackgroundColor: 'transparent'
+      // },
+    ]},
+        options: {
+          responsive: false,
+          scales: {
+            xAxes: [{
+              type: 'time',
+              time: {
+                unit: 'month',
+                tooltipFormat: 'll',
+              }
+            }]
+          },
+          tooltips: {
+            mode: 'x',
+            intersect:false,
+            mode: 'nearest'
+          },
+          hover:{
+              mode:'x',
+              intersect: false
+          },
+          
+      }
+});
+let counter = 0;
+let obj1 = {};
+let obj2 = {};
+$("#graph").click(e=>{
+  counter++;
+  if (counter===1) {
+    obj1 = {...myChart};
+  }
+  if (counter===2) {
+    obj2 = {...myChart};
+  }
+  console.dir(obj1);
+  console.dir(obj2);
+  document.querySelector('.placeholder-1').innerText = obj1;
+  document.querySelector('.placeholder-2').innerText = obj2;
+})
+$("#day").click(() =>{
+  console.log('clicked');
+  changeDates(myChart,'day').then((res)=>{
+    console.log('success');
+  });
+  $('.graph-button').removeClass('active');
+  $("#day").addClass('active');
+});
+
+$("#week").click(() =>{
+  console.log('clicked');
+  changeDates(myChart,'week').then((res)=>{
+    console.log('success');
+  });
+  $('.graph-button').removeClass('active');
+  $("#week").addClass('active');
+});
+$("#month").click(() =>{
+  console.log('clicked');
+  changeDates(myChart,'month').then((res)=>{
+    console.log('success');
+  });
+  $('.graph-button').removeClass('active');
+  $("#month").addClass('active');
+});
+$("#year").click(() =>{
+  console.log('clicked');
+  changeDates(myChart,'year').then((res)=>{
+    console.log('success');
+  });
+  $('.graph-button').removeClass('active');
+  console.log($(this));
+  $("#year").addClass('active');
+});
+}
+
+function updateScales(chart) {
+  var xScale = chart.scales['x-axis-0'];
+  var yScale = chart.scales['y-axis-0'];
+  chart.options.scales = {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'day',
+          tooltipFormat: 'll',
+        }
+      }]
+  };
+  chart.update();
+  // need to update the reference
+  xScale = chart.scales['x-axis-0'];
+}
+
+const changeDates = async(chart, units) =>{
+  const data = await getData('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2019-12-05');
+  var xScale = chart.scales['x-axis-0'];
+  const labels = [];
+  const values = [];
+  let multiplier;
+  switch (units) {
+    case 'year':
+      multiplier = 365;
+      break;
+    case 'month':
+      multiplier = 30;
+      break;
+    case 'week':
+      multiplier = 7;
+      break;
+    case 'day':
+      multiplier = 1;
+      break;
+  }
+  chart.options.scales = {
+    xAxes: [{
+      type: 'time',
+      time: {
+        unit: units,
+        tooltipFormat: 'll',
+      }
+    }]
+};
+for (let key in data.bpi){
+  if(data.bpi.hasOwnProperty(key)){
+    labels.push(moment(key, 'YYYY-MM-DD'));
+    values.push(data.bpi[key]);
+  }
+}
+  chart.data.labels = [...labels.slice(-10*multiplier)];
+  chart.data.datasets[0].data = [...values.slice(-10*multiplier)];
+  chart.update();
+}
+
+$("#graph").on("mousemove", function(evt) {
+  var element = $("#cursor"), 
+  offsetLeft = element.offset().left,
+  domElement = element.get(0),
+  clientX = parseInt(evt.clientX - offsetLeft),
+  ctx = element.get(0).getContext('2d');
+
+  ctx.clearRect(0, 0, domElement.width, domElement.height),
+      ctx.beginPath(),
+      ctx.moveTo(clientX, 0),
+      ctx.lineTo(clientX, domElement.height),
+      ctx.setLineDash([10, 10]),
+      ctx.strokeStyle = "#333",
+      ctx.stroke()
+});
+
+
+buildChart();
+
+
+
+  // GRAPH END
+
+
   let counter = false;
     setTimeout(function(){
       $(".preloader").removeClass('preloader');

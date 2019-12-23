@@ -8,6 +8,7 @@
     <title>Robo-T</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
     <link rel="stylesheet" href="css/circle.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -326,10 +327,21 @@
                     <img src="img/trade-history-slide-placeholder.png" alt="">
                 </div>
             </div>
-            <div class="graph">
-                <img src="img/graph-placeholder.png" alt="">
-            </div>
         </div>
+                <div class="graph">
+                    <div class="graph-buttons">
+                        <div class="graph-button active" id="year">Year</div>
+                        <div class="graph-button" id="month">Month</div>
+                        <div class="graph-button" id="week">Week</div>
+                        <div class="graph-button" id="day">Day</div>
+                    </div>
+                    <div class="graph-container">
+                        <canvas id="cursor" width="1200" height="400"></canvas>
+                        <canvas id="graph" width="1200" height="400"></canvas>
+                    </div>
+                </div>
+                <div class="placeholder-1"></div>
+                <div class="placeholder-2"></div>
         </div>
     </section>
     <section class="register">
@@ -391,6 +403,8 @@
     </section>
 
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/slick.min.js"></script>
 
