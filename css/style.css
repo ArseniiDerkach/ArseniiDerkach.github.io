@@ -240,7 +240,7 @@ section {
 .spinner__image {
     position: relative;
     transform-origin: 50% 60%;
-    transition: transform .5s linear;
+    transition: transform 1s linear;
     font-size: 500px;
     width: 1em;
     height: 1em;
@@ -500,6 +500,27 @@ section {
     font-size: 30px;
 }
 
+.spinner__last-time {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.spinner__last-time-text {
+    color: #fff;
+}
+.spinner__last-time-value {
+    font-weight: bold;
+    text-align: center;
+}
+
+.spinner__last-time.hidden {
+    display: none;
+}
+
 .spinner__last-profit {
     position: absolute;
     top: 55%;
@@ -602,6 +623,7 @@ section {
 
 .container_statistics .section__headline {
     flex: 0 0 100%;
+    margin-bottom: 50px;
 }
 
 .statistics__items {

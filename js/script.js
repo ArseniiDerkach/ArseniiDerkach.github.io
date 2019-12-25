@@ -26,7 +26,8 @@ $(document).ready(function(){
     const times = [];
     const values1 = [];
     const values2 = [];
-
+    const testData = await getData('https://robotrade.io/index.php?option=com_idvjson');
+    console.log(testData);
   // const data2 = JSON.parse(await getData('http://localhost:5500/data.json'));
   const data = await getData('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2019-12-05');
     // data2.forEach(([time,value])=>{
@@ -282,6 +283,17 @@ buildChart();
       profit: '0.1'
     }
 
+
+    // // var initial = 30000;
+    // // var count = initial;
+    // let counter; //10 will  run it every 100th of a second
+
+    
+
+    // displayCount(initial);
+
+    
+
     let currentSpinnerStep = 0;
 
     function spinnerStep(data) {
@@ -290,6 +302,30 @@ buildChart();
       const verticeTexts = [...spinner.querySelectorAll('.vertice-text')];
       const vertices = [...spinner.querySelectorAll('.vertice')];
       const edgeTexts = [...spinner.querySelectorAll('.edge')];
+      const timeLeftContainer = spinner.querySelector('.spinner__last-time');
+      const timeLeftItem = timeLeftContainer.querySelector('.spinner__last-time-value');
+      const lastProfitContainer = spinner.querySelector('.spinner__last-profit');
+      timeLeftContainer.classList.remove('hidden');
+      let timeLeft = 250;
+      timeLeftItem.innerHTML = '';
+
+      const timer = () => {
+        if (timeLeft <= 0) {
+            clearInterval(counter);
+            return;
+        }
+        timeLeft--;
+        displayCount(timeLeft);
+    }
+    let counter;
+
+    const displayCount = (timeLeft)=> {
+        var res = timeLeft / 100;
+        timeLeftItem.innerHTML = res.toPrecision(timeLeft.toString().length) + " secs";
+    }
+    
+    
+      image.style.transitionDuration = '';
       spinner.querySelector('.spinner__last-profit-value').innerText = `+${data.profit}$`;
       verticeTexts.forEach((item,index)=>{
         console.log(data[`edge${index+1}`]);
@@ -301,6 +337,9 @@ buildChart();
       }) 
       vertices.forEach((item,index)=>{
         setTimeout(()=>{
+          if (!index) {
+            counter = setInterval(timer, 10);
+          };
           const question = item.querySelector('.vertice-text-question');
           const data = item.querySelector('.vertice-text-data');
           question.classList.add('hidden');
@@ -315,6 +354,8 @@ buildChart();
         },1000*(index+1)+500);
       });
       setTimeout(()=>{
+        clearInterval(counter);
+        timeLeftContainer.classList.add('hidden');
         spinner.querySelector('.spinner__last-profit').classList.remove('hidden');
       },3500);
       setTimeout(()=>{
@@ -330,32 +371,22 @@ buildChart();
         },1000);
         
       setTimeout(()=>{
-        verticeTexts.forEach((item)=>{
-          item.style.transform = `rotate(-${120*currentSpinnerStep}deg)`;
-        })
-        image.style.transform = `rotate(${120*currentSpinnerStep}deg)`;
-        edgeTexts.forEach((item,index)=>{
-          item.querySelector('.edge-text').classList.remove('bottom');
-          if (index === ((1+currentSpinnerStep)%3)) {
-            item.querySelector('.edge-text').classList.add('bottom');
-          }
-        })
+        image.style.transform = `rotate(360deg)`;
       },1500);
       setTimeout(()=>{
         vertices.forEach((item)=>{
             item.querySelector('.vertice-text-question').classList.remove('hidden');
         });
-        edgeTexts.forEach((item,index)=>{
-          item.querySelector('.edge-text').classList.remove('hidden');
-          if (index === ((1+currentSpinnerStep)%3)) {
-            item.querySelector('.edge-text').classList.add('bottom');
-          }
-        })
-      },2000);
+        image.style.transitionDuration = '0s';
+        setTimeout(()=>{
+          image.style.transform = '';
+          lastProfitContainer.classList.add('hidden');
+        },100);
+      },3000);
     },10000);
   }
-    spinnerStep(spinnerData1);
-    // spinnerStep(spinnerData1);
+  spinnerStep(spinnerData1);
+  setInterval(()=>spinnerStep(spinnerData1),15000);
     window.addEventListener('scroll',()=>{
       const windowHeight = window.innerHeight;
       [...$('.animated-headline')].forEach((item,index)=>{
@@ -370,8 +401,7 @@ buildChart();
       })
 
 
-      if ($('.statistics')[0].getBoundingClientRect().top < windowHeight) {
-        console.log($('.statistics')[0].getBoundingClientRect().top);
+      if ($('.statistics__items')[0].getBoundingClientRect().top < windowHeight) {
         [...$(".statistic__item")].forEach((item,index)=>{
           setTimeout(()=>{
             item.classList.remove('hidden');
