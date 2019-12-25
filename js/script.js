@@ -1,7 +1,11 @@
 const getData = async (url) =>{
-  let response = await fetch(url);
-  let data = await response.json()
+  try {
+  let response = await fetch(url, {mode: 'cors'});
+  let data = await response.json();
   return data;
+  } catch(err) {
+    console.log(err);
+  }
 }
 
 const filterLabels = labels => [...new Set(labels)];
@@ -105,37 +109,28 @@ $("#graph").click(e=>{
   document.querySelector('.placeholder-2').innerText = obj2;
 })
 $("#day").click(() =>{
-  console.log('clicked');
   changeDates(myChart,'day').then((res)=>{
-    console.log('success');
   });
   $('.graph-button').removeClass('active');
   $("#day").addClass('active');
 });
 
 $("#week").click(() =>{
-  console.log('clicked');
   changeDates(myChart,'week').then((res)=>{
-    console.log('success');
   });
   $('.graph-button').removeClass('active');
   $("#week").addClass('active');
 });
 $("#month").click(() =>{
-  console.log('clicked');
   changeDates(myChart,'month').then((res)=>{
-    console.log('success');
   });
   $('.graph-button').removeClass('active');
   $("#month").addClass('active');
 });
 $("#year").click(() =>{
-  console.log('clicked');
   changeDates(myChart,'year').then((res)=>{
-    console.log('success');
   });
   $('.graph-button').removeClass('active');
-  console.log($(this));
   $("#year").addClass('active');
 });
 }
@@ -328,7 +323,6 @@ buildChart();
       image.style.transitionDuration = '';
       spinner.querySelector('.spinner__last-profit-value').innerText = `+${data.profit}$`;
       verticeTexts.forEach((item,index)=>{
-        console.log(data[`edge${index+1}`]);
         item.querySelector('.vertice-text-value').innerText = data[`edge${index+1}`].value;
         item.querySelector('.vertice-text-currency').innerText = data[`edge${index+1}`].currency;
       })
@@ -412,7 +406,6 @@ buildChart();
         const offsetTop = windowHeight - $('.statistics')[0].getBoundingClientRect().top + windowHeight;
         const topSm = triangleSm.css('top');
         const topLg = triangleLg.css('top');
-        console.log(topSm,topLg);
         const scrollProgress = offsetTop / (2 * windowHeight);
         triangleSm.css('top',`${windowHeight - scrollProgress * windowHeight/2}px`);
         triangleSm.css('bottom',`unset`);
@@ -487,7 +480,6 @@ buildChart();
         const offsetTop = windowHeight - $('.register')[0].getBoundingClientRect().top + windowHeight;
         const topSm = triangleSm.css('top');
         const topLg = triangleLg.css('top');
-        console.log(topSm,topLg);
         const scrollProgress = offsetTop / (2 * windowHeight);
         triangleSm.css('top',`${windowHeight + scrollProgress * windowHeight/2}px`);
         triangleSm.css('bottom',`unset`);
