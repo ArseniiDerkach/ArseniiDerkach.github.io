@@ -95,6 +95,9 @@ const url = `${document.location.origin}/data.json`;
               mode:'x',
               intersect: false
           },
+          legend: {
+            display: false
+          }
           
       }
 });
@@ -135,7 +138,19 @@ $("#year").click(() =>{
   $('.graph-button').removeClass('active');
   $("#year").addClass('active');
 });
+$(".btc-toggle").click(function() {
+  console.log($(this)[0].dataset);
+  const tumbler = ($(this)[0].dataset['toggled']==='true') ? true : false;
+
+  toggleChart(myChart,tumbler, 'BTC').then((res)=>{
+    $(this)[0].dataset['toggled'] = ($(this)[0].dataset['toggled']==='true') ? 'false' : 'true';
+  }, (err)=>console.log(err));
+})
 }
+
+
+
+
 
 function updateScales(chart) {
   var xScale = chart.scales['x-axis-0'];
@@ -152,6 +167,18 @@ function updateScales(chart) {
   chart.update();
   // need to update the reference
   xScale = chart.scales['x-axis-0'];
+}
+
+const toggleChart = async(chart,tumbler,label) => {
+  const neededIndex = chart.data.datasets.findIndex((item)=>item.label === label);
+  console.log(neededIndex);
+  if (tumbler) { // if true => turn off chart
+    chart.data.datasets[neededIndex].data = [];
+    chart.update();
+  } else {
+    await changeDates(chart, 'year');
+  }
+  console.log(chart.data);
 }
 
 const changeDates = async(chart, units) =>{
@@ -298,6 +325,9 @@ buildChart();
       newSlide.classList.add('graph__item');
       const newInner = slide.cloneNode(true);
       newSlide.appendChild(newInner);
+      [...newSlide.querySelectorAll('.graph__item-edge')].forEach((item,index)=>{
+        item.classList.add('hidden');
+      });
       [...newSlide.querySelectorAll('.graph__item-edge a')].forEach((item,index)=>{
         item.innerText = data[`edge${index+1}`];
       })
@@ -305,13 +335,18 @@ buildChart();
       // newSlide.querySelector('.graph__item-time').innerText = ago > 60 ? `${Math.floor(ago/60)}:${ago % 60 > 9 ? ago % 60 : `0${ago % 60}`}min` : `${ago}sec`;
       newSlide.querySelector('.graph__item-time-value').innerText = `${Math.floor(ago/60)}:${ago % 60 > 9 ? ago % 60 : `0${ago % 60}`}min`;
       newSlide.querySelector('.graph__item-profit-value').innerText = `$${data.profit}`;
-      
+      [...newSlide.querySelectorAll('.graph__item-edge')].forEach((item,index)=>{
+        setTimeout(()=>{
+          item.classList.remove('hidden');
+        },(index+1)*400)
+      });
       if (slideAmount >= 10) {
         $('.graph-slider').slick('slickRemove',9);
         $('.graph-slider').slick('slickAdd',newSlide,0,true);
       } else {
         $('.graph-slider').slick('slickAdd',newSlide,0,true);
       }
+
     }
     
     setTimeout(()=>fillSlide(newSliderData),2000);

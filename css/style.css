@@ -1085,6 +1085,11 @@ section {
     overflow: hidden;
     font-size: 22px;
     color: #fff;
+    transition: opacity .4s linear;
+    opacity: 1;
+}
+.graph__item-edge.hidden {
+    opacity: 0;
 }
 .graph__item-edge:hover {
     color: #0bffff;
@@ -1234,8 +1239,32 @@ section {
 
 .graph-buttons {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.graph-buttons-toggle {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.chart-toggle {
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px;
+    color: #144988;
+    background-color: #e8a23b;
+    font-size: 19px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.graph-buttons-dates {
+    display: flex;
     justify-content: flex-end;
 }
+
+
 
 .graph-button {
     height: 45px;
@@ -1275,40 +1304,50 @@ section {
     /* flex: 0 0 30%; */
 }
 .robot img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     max-width: 100%;
 }
 
 .robot {
     position: relative;
+    font-size: 411px;
+    width: 1em;
+    height: 0.902em;
+    margin: 0 auto;
 }
 
 .robot-eye {
     position: absolute;
-    width: 40px;
-    top: 167px;
-    height: 40px;
+    width: 0.097em;
+    top: 0.406em;
+    height: 0.097em;
     background-color: rgba(255,255,255,0.32);
     border-radius: 50%;
     animation: blink 2s infinite step-end;
 }
 
 .eye-left {
-    left: 136px;
+    left: 0.33em;
 }
 
 .eye-right {
-    left: 236px;
+    left: 0.575em;
 }
 
 .robot-mouth {
     position: absolute;
     width: 177px;
-    left: 117px;
-    bottom: 58px;
+    left: 50%;
+    bottom: 0.1411em;
     display: flex;
     align-items: flex-end;
     max-height: 80px;
     overflow-y: hidden;
+    transform: translateX(-50%);
 }
 
 .robot-tooth {
@@ -1537,6 +1576,7 @@ section {
     .register__form {
         margin-bottom: 20px;
         text-align: center;
+        margin-left: 0;
     }
     .register__form input {
         margin-left: auto;
@@ -1566,7 +1606,6 @@ section {
         align-items: center;
     }
     .robot {
-        order: 1;
         flex-basis: 50%;
     }
     .footer {
@@ -1620,7 +1659,7 @@ section {
         transform: translateY(0);
     }
     .header__menu-item {
-        margin: 0;
+        margin: 20px 0;
         height: 30px;
     }
     .header__menu-item:hover a {
@@ -1640,6 +1679,7 @@ section {
         height: 11px;
         position: relative;
         margin-top: 7px;
+        cursor: pointer;
     }
     .toggle-menu-inner,
     .toggle-menu-inner:before,
@@ -1702,6 +1742,9 @@ section {
         font-size: 42px;
         margin-bottom: 30px;
     }
+    .promo {
+        padding-top: 80px;
+    }
     .container_promo {
         flex-direction: column;
         align-items: center;
@@ -1710,8 +1753,8 @@ section {
         font-size: 32px;
     }
     .promo__spinner {
-        margin-bottom: 50px;
-        margin-top: 50px;
+        margin-bottom: 0;
+        margin-top: 0;
     }
     .promo__sign-up-heading {
         padding-bottom: 30px;
@@ -1797,6 +1840,8 @@ section {
     .graph__item {
         padding: 0;
     }
+
+
     
     .register__form {
         width: 100%;
@@ -1982,10 +2027,20 @@ section {
         padding: 0 10px;
     }
     .robot {
-        flex-basis: 80%;
+        font-size: 300px;
+    }
+    .robot-mouth {
+        width: 132px;
+
+        transform: translateX(-50%) scaleY(0.7)
+    }
+    .robot-tooth {
+        width: 12px;
+        margin-right: 8px;
     }
     .register__form {
         padding: 0 30px;
+        margin-bottom: 30px;
     }
     .register__form-subheading {
         font-size: 14px;
@@ -1998,5 +2053,31 @@ section {
     }
     .register__form .btn {
         width: 100%;
+    }
+    .footer {
+        border-top: 4px solid #fff;
+        padding-top: 30px;
+    }
+    .footer__menu {
+        display: none;
+    }
+    .footer__info {
+        padding: 0 10px;
+        font-size: 12px;
+        line-height: 30px;
+    }
+    .footer__social {
+        order: 0;
+        flex-basis: 100%;
+        justify-content: center;
+    }
+    .social-icon {
+        margin: 0 4px;
+    }
+
+    .footer__copyright,
+    .footer__contacts {
+        order: 1;
+        flex-basis: 50%;
     }
 }
