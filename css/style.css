@@ -1212,6 +1212,7 @@ section {
     background-repeat: no-repeat;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 
@@ -1420,6 +1421,9 @@ section {
 }
 
 @media (max-width: 1199px) {
+    .container_promo:after {
+        left: 40%;
+    }
     .header__menu-item a {
         font-size: 14px;
     }
@@ -1520,6 +1524,13 @@ section {
 }
 
 @media(max-width: 991px) {
+
+    .container_promo:after {
+        top: 0%;
+        left: 0%;
+        right: 0%;
+        bottom: 10%;
+    }
     
     .header {
         height: 60px;
@@ -1642,7 +1653,6 @@ section {
         font-size: 32px;
     }
     .promo__spinner {
-        width: 500px;
         margin-bottom: 50px;
         margin-top: 50px;
     }
@@ -1664,6 +1674,9 @@ section {
     .statistics__current-text {
         flex-basis: auto;
         padding: 0 15px;
+    }
+    .statistics__current-text {
+        margin-left: 10px;
     }
     .statistic__item {
         flex-basis: auto;
@@ -1724,6 +1737,9 @@ section {
         width: 28px;
         height: 54px;
     }
+    .graph__item {
+        padding: 0;
+    }
     
     .register__form {
         width: 100%;
@@ -1747,6 +1763,24 @@ section {
     }
 
 }
+@media(max-width: 768px) {
+    .spinner__image {
+        font-size: 450px;
+    }
+    .graph__item-details {
+        height: 150px;
+    }
+    .graph__item-details {
+        flex-basis: 65%;
+    }
+    .graph__item-info {
+        flex-basis: 35%;
+        padding: 0 10px;
+    }
+    .graph__item-edge {
+        font-size: 16px;
+    }
+}
 
 @media (max-width: 479px) {
     .header__logo {
@@ -1757,6 +1791,14 @@ section {
     }
     .promo__spinner {
         width: 100%;
+    }
+    .spinner__image {
+        font-size: 280px;
+    }
+    .spinner__last-profit,
+    .spinner__last-time {
+        font-size: 14px;
+        margin-top: 0;
     }
     .btn {
         width: 250px;
@@ -1830,9 +1872,35 @@ section {
     .history__list-link {
         font-size: 14px;
     }
+    .graph-slider-wrapper {
+        width: calc(100% - 60px);
+    }
     .graph-slider .slick-arrow {
         width: 14px;
         height: 28px;
+    }
+    .graph__item-details {
+        flex-basis: calc(70% - 1px);
+    }
+    .graph__item-info {
+        flex-basis: 30%;
+    }
+
+    .graph__item-time-text,
+    .graph__item-profit-text {
+        font-size: 8px;
+    }
+    .graph__item-time-value {
+        font-size: 14px;
+    }
+    .graph__item-profit-value {
+        font-size: 18px;
+    }
+    .graph-slider .slick-prev {
+        left: -20px;
+    }
+    .graph-slider .slick-next {
+        right: -20px;
     }
     .robot {
         flex-basis: 80%;

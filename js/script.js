@@ -298,7 +298,7 @@ buildChart();
       newSlide.classList.add('graph__item');
       const newInner = slide.cloneNode(true);
       newSlide.appendChild(newInner);
-      [...newSlide.querySelectorAll('.graph__item-edge')].forEach((item,index)=>{
+      [...newSlide.querySelectorAll('.graph__item-edge a')].forEach((item,index)=>{
         item.innerText = data[`edge${index+1}`];
       })
       const ago = parseInt((Date.now() - new Date(data.time))/1000);
