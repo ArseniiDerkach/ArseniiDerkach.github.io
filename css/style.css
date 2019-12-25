@@ -1902,6 +1902,9 @@ section {
     .graph-slider .slick-next {
         right: -20px;
     }
+    .graph-slider .slick-dots button {
+        margin: 0 5px;
+    }
     .robot {
         flex-basis: 80%;
     }
