@@ -33,7 +33,7 @@ const url = `${document.URL}data.json`;
     const times = [];
     const values1 = [];
     const values2 = [];
-    const data = await getData(url);
+    const data = JSON.parse(await getData(url));
   // const data2 = JSON.parse(await getData('http://localhost:5500/data.json'));
   // const data = await getData('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2019-12-05');
     // data2.forEach(([time,value])=>{
