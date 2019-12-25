@@ -1143,7 +1143,7 @@ section {
 .graph__item-edge a {
     text-decoration: none;
     color: #fff;
-    font-size: 22px;
+    font-size: 15px;
 }
 .graph__item-edge a:hover {
     text-decoration: underline;
@@ -1605,6 +1605,9 @@ section {
         justify-content: center;
         align-items: center;
     }
+    .graph__item-edge a {
+        font-size: 18px;
+    }
     .robot {
         flex-basis: 50%;
     }
@@ -1840,8 +1843,6 @@ section {
     .graph__item {
         padding: 0;
     }
-
-
     
     .register__form {
         width: 100%;
@@ -1894,6 +1895,9 @@ section {
     }
     .graph-slider .slick-next {
         right: -40px;
+    }
+    .graph__item-edge a {
+        font-size: 16px;
     }
 }
 
@@ -2025,6 +2029,9 @@ section {
         line-height: 22px;
         height: 22px;
         padding: 0 10px;
+    }
+    .graph__item-edge a {
+        font-size: 10px;
     }
     .robot {
         font-size: 300px;
