@@ -120,10 +120,6 @@ section {
     }
 }
 
-@media (max-width: 768px) {
-    
-}
-
 .text.text_orange {
     color: #fcb040;
 }
@@ -1780,6 +1776,19 @@ section {
     .graph__item-edge {
         font-size: 16px;
     }
+    .graph-slider-wrapper {
+        width: calc( 100% - 100px);
+    }
+    .graph-slider .slick-arrow {
+        width: 21px;
+        height: 42px;
+    }
+    .graph-slider .slick-prev {
+        left: -40px;
+    }
+    .graph-slider .slick-next {
+        right: -40px;
+    }
 }
 
 @media (max-width: 479px) {
@@ -1904,6 +1913,12 @@ section {
     }
     .graph-slider .slick-dots button {
         margin: 0 5px;
+    }
+    .graph-button {
+        font-size: 10px;
+        line-height: 22px;
+        height: 22px;
+        padding: 0 10px;
     }
     .robot {
         flex-basis: 80%;

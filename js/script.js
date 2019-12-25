@@ -155,7 +155,7 @@ function updateScales(chart) {
 }
 
 const changeDates = async(chart, units) =>{
-  const data = await getData(url);
+  const data = JSON.parse(await getData(url));
   var xScale = chart.scales['x-axis-0'];
   const labels = [];
   const values = [];
