@@ -246,6 +246,74 @@ buildChart();
             }
         ]
     });
+
+
+
+    const interval = 1000;
+    let expected = Date.now() + interval;
+    
+    const sliderTimeStep = () => {
+      const dt = Date.now() - expected;
+      let timeStep;
+        if (dt > interval) {
+          timeStep = Math.round(dt);
+        } else {
+          timeStep = interval;
+        }
+        expected += interval;
+        [...document.querySelectorAll('.graph__item-time-value')].forEach(item=>{
+          let currentTime = item.innerHTML.split(':').map(item=>parseInt(item)).map((item,index)=>item*(60**(1-index))).reduce((a,b)=>a+b);
+          currentTime+=(timeStep/1000);
+          item.innerText = `${Math.floor(currentTime/60)}:${currentTime % 60 > 9 ? currentTime % 60 : `0${currentTime % 60}`}min`;
+        })
+      setTimeout(sliderTimeStep, Math.max(0, interval - dt));
+      
+    }
+    setTimeout(sliderTimeStep, interval);
+
+
+    const newSliderData = {
+      edge1: 'Waves COMMUNITY',
+      edge2: 'Pioner Komsomol',
+      edge3: 'ETH',
+      profit: '0.001',
+      time: Date.now() - 3000
+    }
+
+    const fillSlide = (data) => {
+      const slider = document.querySelector('.graph-slider');
+      const slide = document.querySelector('.graph__item-inner');
+      const slideAmount = (slider.querySelectorAll(".graph__item").length - 1 ) / 2;
+      console.log(slideAmount);
+      const newSlide = document.createElement('div');
+      newSlide.classList.add('graph__item');
+      const newInner = slide.cloneNode(true);
+      newSlide.appendChild(newInner);
+      [...newSlide.querySelectorAll('.graph__item-edge')].forEach((item,index)=>{
+        item.innerText = data[`edge${index+1}`];
+      })
+      const ago = parseInt((Date.now() - new Date(data.time))/1000);
+      // newSlide.querySelector('.graph__item-time').innerText = ago > 60 ? `${Math.floor(ago/60)}:${ago % 60 > 9 ? ago % 60 : `0${ago % 60}`}min` : `${ago}sec`;
+      newSlide.querySelector('.graph__item-time-value').innerText = `${Math.floor(ago/60)}:${ago % 60 > 9 ? ago % 60 : `0${ago % 60}`}min`;
+      newSlide.querySelector('.graph__item-profit-value').innerText = `$${data.profit}`;
+      
+      if (slideAmount >= 10) {
+        $('.graph-slider').slick('slickRemove',9);
+        $('.graph-slider').slick('slickAdd',newSlide,0,true);
+      } else {
+        $('.graph-slider').slick('slickAdd',newSlide,0,true);
+      }
+    }
+    
+    setTimeout(()=>fillSlide(newSliderData),2000);
+    setTimeout(()=>fillSlide(newSliderData),8000);
+    setTimeout(()=>fillSlide(newSliderData),10000);
+    setTimeout(()=>fillSlide(newSliderData),12000);
+    setTimeout(()=>fillSlide(newSliderData),22000);
+    setTimeout(()=>fillSlide(newSliderData),32000);
+    setTimeout(()=>fillSlide(newSliderData),40000);
+    setTimeout(()=>fillSlide(newSliderData),45000);
+
     const spinnerData1 = {
       edge1 : {
         value: 0.00001,

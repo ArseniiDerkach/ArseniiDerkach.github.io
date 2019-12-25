@@ -1098,21 +1098,20 @@ section {
 }
 .graph__item-edge.graph__item-edge-1 {
     top: 15%;
-    left: 50%;
-    transform: translateX(-150%);
+    left: 3%;
+    text-align: right;
+    width: 37%;
 }
 .graph__item-edge.graph__item-edge-2 {
     bottom: 10%;
-    top: unset;
     text-align: right;
-    left: 0;
-    width: 40%;
+    left: 3%;
+    width: 37%;
 }
 .graph__item-edge.graph__item-edge-3 {
     bottom: 10%;
-    top: unset;
     left: 60%;
-    width: 40%;   
+    width: 37%;   
 }
 .graph__item-info {
     display: flex;
@@ -1180,7 +1179,7 @@ section {
     transform: translateX(-50%);
     display: flex;
     list-style: none;
-    width: 90px;
+    width: auto;
     justify-content: space-between; 
 }
 
@@ -1188,6 +1187,7 @@ section {
     font-size: 0;
     width: 12px;
     height: 12px;
+    margin: 0 10px;
     border-radius: 50%;
     border: 2px solid #fff;
     outline: none;
