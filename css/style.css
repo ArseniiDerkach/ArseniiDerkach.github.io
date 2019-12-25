@@ -39,16 +39,13 @@
     0% {
         opacity: 1;
     }
-    10% {
-        opacity: 0;
-    }
-    20% {
-        opacity: 1;
-    }
-    40% {
+    25% {
         opacity: 0;
     }
     50% {
+        opacity: 1;
+    }
+    75% {
         opacity: 1;
     }
   }
@@ -1275,10 +1272,74 @@ section {
 
 .robot {
     position: relative;
-    flex: 0 0 30%;
+    /* flex: 0 0 30%; */
 }
 .robot img {
     max-width: 100%;
+}
+
+.robot {
+    position: relative;
+}
+
+.robot-eye {
+    position: absolute;
+    width: 40px;
+    top: 167px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.32);
+    border-radius: 50%;
+    animation: blink 2s infinite step-end;
+}
+
+.eye-left {
+    left: 136px;
+}
+
+.eye-right {
+    left: 236px;
+}
+
+.robot-mouth {
+    position: absolute;
+    width: 177px;
+    left: 117px;
+    bottom: 58px;
+    display: flex;
+    align-items: flex-end;
+    max-height: 80px;
+    overflow-y: hidden;
+}
+
+.robot-tooth {
+    width: 15px;
+    margin-right: 12px;
+    background-color: rgba(255,255,255,0.32);
+}
+.robot-tooth:last-child {
+    margin-right: 0;
+}
+
+.robot-tooth:nth-child(1) {
+    height: 75px;
+}
+.robot-tooth:nth-child(2) {
+    height: 45px;
+}
+.robot-tooth:nth-child(3) {
+    height: 58px;
+}
+.robot-tooth:nth-child(4) {
+    height: 39px;
+}
+.robot-tooth:nth-child(5) {
+    height: 59px;
+}
+.robot-tooth:nth-child(6) {
+    height: 45px;
+}
+.robot-tooth:nth-child(7) {
+    height: 75px;
 }
 
 

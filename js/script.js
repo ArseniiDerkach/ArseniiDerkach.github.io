@@ -478,20 +478,24 @@ buildChart();
 
 
       if ($('.statistics__items')[0].getBoundingClientRect().top < windowHeight) {
+        
         [...$(".statistic__item")].forEach((item,index)=>{
           setTimeout(()=>{
             item.classList.remove('hidden');
           },(index+1)*250);
         })
+      }
+      if ($(".statistics")[0].getBoundingClientRect().top < windowHeight) {
+        const height = $('.statistics')[0].getBoundingClientRect().height;
         const triangleSm = $('.statistics .triangle-sm');
         const triangleLg = $('.statistics .triangle-lg');
-        const offsetTop = windowHeight - $('.statistics')[0].getBoundingClientRect().top + windowHeight;
+        const offsetTop = height - $('.statistics')[0].getBoundingClientRect().top + height;
         const topSm = triangleSm.css('top');
         const topLg = triangleLg.css('top');
-        const scrollProgress = offsetTop / (2 * windowHeight);
-        triangleSm.css('top',`${windowHeight - scrollProgress * windowHeight/2}px`);
+        const scrollProgress = offsetTop / (2 * height);
+        triangleSm.css('top',`${height - scrollProgress * height/2}px`);
         triangleSm.css('bottom',`unset`);
-        triangleLg.css('top',`${windowHeight - scrollProgress * windowHeight/2}px`);
+        triangleLg.css('top',`${height - scrollProgress * height/2}px`);
         triangleLg.css('bottom',`unset`);
       }
 
@@ -557,15 +561,16 @@ buildChart();
       }
 
       if ($('.register')[0].getBoundingClientRect().top < windowHeight) {
+        const height = $('.register')[0].getBoundingClientRect().height;
         const triangleSm = $('.register .triangle-sm');
         const triangleLg = $('.register .triangle-lg');
-        const offsetTop = windowHeight - $('.register')[0].getBoundingClientRect().top + windowHeight;
+        const offsetTop = height - $('.register')[0].getBoundingClientRect().top + height;
         const topSm = triangleSm.css('top');
         const topLg = triangleLg.css('top');
-        const scrollProgress = offsetTop / (2 * windowHeight);
-        triangleSm.css('top',`${windowHeight + scrollProgress * windowHeight/2}px`);
+        const scrollProgress = offsetTop / (2 * height);
+        triangleSm.css('top',`${height/2 - scrollProgress * height/2}px`);
         triangleSm.css('bottom',`unset`);
-        triangleLg.css('top',`${windowHeight + scrollProgress * windowHeight/2}px`);
+        triangleLg.css('top',`${height/2 - scrollProgress * height/2}px`);
         triangleLg.css('bottom',`unset`);
        }
       
@@ -622,4 +627,15 @@ buildChart();
       $(this).toggleClass('active');
       $('.header__menu').toggleClass('active');
     })
+
+    function runRobot() {
+      const teeth = [...$('.robot-tooth')];
+      const heights = teeth.map(item=>$(item).data('tooth-height'));
+      teeth.forEach((item,i)=>{
+        const random = Math.random()*10 - 5;
+        $(item).height(heights[i]+random);
+      })
+    }
+
+    setInterval(runRobot,100);
 })
