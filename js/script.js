@@ -26,7 +26,7 @@ $(document).ready(function(){
 // smooth scroll end
 
 // const url = 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/msft-c.json';
-const url = `${document.URL}data.json`;
+const url = `${document.location.origin}/data.json`;
   // GRAPH
   const buildChart = async () => {
     const ctx = $('#graph');
@@ -109,10 +109,6 @@ $("#graph").click(e=>{
   if (counter===2) {
     obj2 = {...myChart};
   }
-  console.dir(obj1);
-  console.dir(obj2);
-  document.querySelector('.placeholder-1').innerText = obj1;
-  document.querySelector('.placeholder-2').innerText = obj2;
 })
 $("#day").click(() =>{
   changeDates(myChart,'day').then((res)=>{
@@ -191,7 +187,6 @@ data.forEach(([time,value])=>{
   labels.push(moment(time));
   values.push(value);
 })
-console.log((labels.length > 10*multiplier) ? 1 : 0);
   chart.data.labels = (labels.length > 10*multiplier) ? [...labels.slice(10*multiplier)]: [...labels];
   chart.data.datasets[0].data = (values.length > 10*multiplier) ? [...values.slice(10*multiplier)] : [...values];
   chart.update();
@@ -233,7 +228,9 @@ buildChart();
           $('.promo__form .btn').removeClass('loading');
         },1000)
       },1000)
-    },2000)
+    },2000);
+
+
     $('.graph-slider').slick({
         dots: true,
         slidesToShow: 2,
@@ -279,12 +276,24 @@ buildChart();
       profit: '0.001',
       time: Date.now() - 3000
     }
+    const newSliderData1 = {
+      edge1: 'Waves COMMUNITY',
+      edge2: 'Pioner Komsomol',
+      edge3: 'ETH',
+      profit: '0.001',
+      time: Date.now() + 8000
+    }
 
     const fillSlide = (data) => {
       const slider = document.querySelector('.graph-slider');
       const slide = document.querySelector('.graph__item-inner');
-      const slideAmount = (slider.querySelectorAll(".graph__item").length - 1 ) / 2;
-      console.log(slideAmount);
+      let counter = 0;
+      [...slider.querySelectorAll(".graph__item")].forEach(item=>{
+        if (!item.classList.contains('slick-cloned')) {
+          counter++;
+        }
+      })
+      const slideAmount = counter;
       const newSlide = document.createElement('div');
       newSlide.classList.add('graph__item');
       const newInner = slide.cloneNode(true);
@@ -306,7 +315,7 @@ buildChart();
     }
     
     setTimeout(()=>fillSlide(newSliderData),2000);
-    setTimeout(()=>fillSlide(newSliderData),8000);
+    setTimeout(()=>fillSlide(newSliderData1),8000);
     setTimeout(()=>fillSlide(newSliderData),10000);
     setTimeout(()=>fillSlide(newSliderData),12000);
     setTimeout(()=>fillSlide(newSliderData),22000);
