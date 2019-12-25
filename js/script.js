@@ -1,6 +1,6 @@
-const getData = async (url) =>{
+const getData = async (url,mode = 'cors') =>{
   try {
-  let response = await fetch(url, {mode: 'cors'});
+  let response = await fetch(url, {mode});
   let data = await response.json();
   return data;
   } catch(err) {
@@ -24,35 +24,41 @@ $(document).ready(function(){
 });
 
 // smooth scroll end
+
+// const url = 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/msft-c.json';
+const url = `${document.URL}data.json`;
   // GRAPH
   const buildChart = async () => {
     const ctx = $('#graph');
     const times = [];
     const values1 = [];
     const values2 = [];
-    const testData = await getData('https://robotrade.io/index.php?option=com_idvjson');
-    console.log(testData);
+    const data = await getData(url);
   // const data2 = JSON.parse(await getData('http://localhost:5500/data.json'));
-  const data = await getData('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2019-12-05');
+  // const data = await getData('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2019-12-05');
     // data2.forEach(([time,value])=>{
     //   values2.push(value);
     // })
-    for (let key in data.bpi){
-      if(data.bpi.hasOwnProperty(key)){
-        times.push(moment(key, 'YYYY-MM-DD'));
-        values1.push(data.bpi[key]);
-      }
-   }
+  //   for (let key in data.bpi){
+  //     if(data.bpi.hasOwnProperty(key)){
+  //       times.push(moment(key, 'YYYY-MM-DD'));
+  //       values1.push(data.bpi[key]);
+  //     }
+  //  }
+  data.forEach(([time,value])=>{
+    values1.push(value);
+    times.push(moment(time));
+  })
 
    const timeFormat = 'YYYY';
 
   const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: [...times.slice(-3650)],
+        labels: times.length > 3650 ? [...times.slice(3650)]: [...times],
         datasets: [{
             label: 'BTC',
-            data: [...values1.slice(-3650)],
+            data: values1.length > 3650 ? [...values1.slice(3650)]: [...values1],
             fill: false,
             borderColor: 'rgba(196, 137, 50, 1)',
             borderWidth: 0,
@@ -153,7 +159,7 @@ function updateScales(chart) {
 }
 
 const changeDates = async(chart, units) =>{
-  const data = await getData('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2019-12-05');
+  const data = await getData(url);
   var xScale = chart.scales['x-axis-0'];
   const labels = [];
   const values = [];
@@ -181,14 +187,13 @@ const changeDates = async(chart, units) =>{
       }
     }]
 };
-for (let key in data.bpi){
-  if(data.bpi.hasOwnProperty(key)){
-    labels.push(moment(key, 'YYYY-MM-DD'));
-    values.push(data.bpi[key]);
-  }
-}
-  chart.data.labels = [...labels.slice(-10*multiplier)];
-  chart.data.datasets[0].data = [...values.slice(-10*multiplier)];
+data.forEach(([time,value])=>{
+  labels.push(moment(time));
+  values.push(value);
+})
+console.log((labels.length > 10*multiplier) ? 1 : 0);
+  chart.data.labels = (labels.length > 10*multiplier) ? [...labels.slice(10*multiplier)]: [...labels];
+  chart.data.datasets[0].data = (values.length > 10*multiplier) ? [...values.slice(10*multiplier)] : [...values];
   chart.update();
 }
 
@@ -234,7 +239,7 @@ buildChart();
         slidesToShow: 2,
         responsive: [
             {
-              breakpoint: 991,
+              breakpoint: 1199,
               settings: {
                 slidesToShow: 1
               }
