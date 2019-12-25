@@ -2024,7 +2024,17 @@ section {
     .graph-slider .slick-dots button {
         margin: 0 5px;
     }
+    .graph-buttons {
+        padding: 0 10px;
+        margin-bottom: 40px;
+    }
     .graph-button {
+        font-size: 10px;
+        line-height: 22px;
+        height: 22px;
+        padding: 0 10px;
+    }
+    .chart-toggle {
         font-size: 10px;
         line-height: 22px;
         height: 22px;
