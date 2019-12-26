@@ -253,9 +253,9 @@ buildChart();
         $('.promo__form .email').removeClass('loading');
         setTimeout(()=>{
           $('.promo__form .btn').removeClass('loading');
-        },1000)
-      },1000)
-    },2000);
+        },400)
+      },400)
+    },800);
 
 
     $('.graph-slider').slick({
