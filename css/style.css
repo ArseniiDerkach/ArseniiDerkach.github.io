@@ -144,6 +144,10 @@ section {
     transition: transform .4s linear;
 }
 
+.header__logo {
+    max-width: 204px;
+}
+
 .container_header {
     height: 100px;
     display: flex;
@@ -1067,7 +1071,7 @@ section {
 }
 
 .graph__item-details {
-    flex: 0 0 calc(75% - 1px);
+    flex: 0 0 calc(70% - 1px);
     position: relative;
     justify-content: center;
     display: flex;
@@ -1157,7 +1161,7 @@ section {
 
 
 .graph__item-info {
-    flex: 0 0 25%;
+    flex: 0 0 30%;
     background-color: #12427d;
     
 }
@@ -1317,7 +1321,7 @@ section {
     font-size: 411px;
     width: 1em;
     height: 0.902em;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .robot-eye {
@@ -1325,9 +1329,10 @@ section {
     width: 0.097em;
     top: 0.406em;
     height: 0.097em;
-    background-color: rgba(255,255,255,0.32);
+    background-color: #1e6ebc;
     border-radius: 50%;
     animation: blink 2s infinite step-end;
+    z-index: 1;
 }
 
 .eye-left {
@@ -1348,12 +1353,13 @@ section {
     max-height: 80px;
     overflow-y: hidden;
     transform: translateX(-50%);
+    z-index: 1;
 }
 
 .robot-tooth {
     width: 15px;
     margin-right: 12px;
-    background-color: rgba(255,255,255,0.32);
+    background-color: #1e6ebc;
 }
 .robot-tooth:last-child {
     margin-right: 0;
@@ -1397,6 +1403,7 @@ section {
 .register_container {
     flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-start;
 }
 
 .register__form {
@@ -1592,6 +1599,7 @@ section {
         left: 0;
         top: 0;
         text-align: center;
+        margin: 0 auto;
     }
     .register .triangle-sm {
         top: 650px;

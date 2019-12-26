@@ -61,7 +61,7 @@ const url = `${document.location.origin}/data.json`;
             data: values1.length > 3650 ? [...values1.slice(3650)]: [...values1],
             fill: false,
             borderColor: 'rgba(196, 137, 50, 1)',
-            borderWidth: 0,
+            borderWidth: 4,
             pointBorderColor: 'transparent',
             pointBackgroundColor: 'transparent'
         },
