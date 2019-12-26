@@ -575,7 +575,7 @@ section {
     font-weight: bold;
     color: #fff;
     transform: translateX(0);
-    transition: transform 1s cubic-bezier(.11,.47,1,1.74);
+    transition: transform 1s cubic-bezier(.17,.67,.14,1.81);
     margin-bottom: 40px;
 }
 
