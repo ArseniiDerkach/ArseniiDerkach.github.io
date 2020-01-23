@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Terminal</title>
+
+    <style>
+        @font-face {
+            font-family: 'SFMono';
+            src: url(../fonts/SFMonoMedium.otf);
+        }
+
+
+
+        .window {
+            width: 600px;
+            margin: 75px auto;
+            background: #2c3e50;
+            height: 350px;
+            border-radius: 5px;
+            display: relative;
+            box-shadow: 10px 10px 10px #888888;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .afterclose {
+            color: #34495e;
+            display: none;
+            text-align: center;
+        }
+
+        .open {
+            color: #fff;
+            padding: 15px;
+            background: #2ecc71;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .bash {
+            width: 600px;
+            background: #000;
+            height: 325px;
+            max-height: 325px;
+            overflow-y: scroll;
+            border-radius: 0 0 5px 5px;
+            top: 40px;
+            color: #fff;
+            font-size: 12px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .controls {
+            display: flex;
+            flex: 0 0 25px;
+            align-items: center;
+        }
+
+        .buttons-wrapper {
+            flex: 0 1 auto;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .button {
+            width: 12px;
+            height: 12px;
+            display: block;
+            border-radius: 50%;
+            margin: 0 6px;
+            border: none;
+            outline: none;
+        }
+        .title {
+            flex: 1 0 auto;
+            text-align: center;
+            margin-right: 72px;
+            color: #fff;
+            font-size: 11px;
+        }
+
+        .close {
+            background: #e74c3c;
+        }
+
+        .maximize {
+            background: #f1c40f;
+        }
+
+        .minimize {
+            background: #2ecc71;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <div class="controls">
+            <div class="buttons-wrapper">
+                <a class="button close" id="close"></a>
+                <a class="button maximize" href="#"></a>
+                <a class="button minimize" href="#"></a>
+            </div>
+            <div class="title">Robotrade Terminal</div>
+        </div>
+        <div class="bash">
+            <div class="details">2020-01-10 11:23 +03:00: Fetched 34 out of 34 responses in 0.107 seconds, 422 operations out of 426, cycle: 0.012 s., total time: 0.12 s</div>
+            <div class="details">2020-01-10 11:23 +03:00: Fetched 34 out of 34 responses in 0.107 seconds, 422 operations out of 426, cycle: 0.012 s., total time: 0.12 s</div>
+        </div>
+        <script>
+            setInterval(()=>{
+                const bash = document.querySelector('.bash');
+                const terminalLine = document.createElement('div');
+                terminalLine.classList.add('details');
+                terminalLine.innerHTML = '2020-01-10 11:23 +03:00: Fetched 34 out of 34 responses in 0.107 seconds, 422 operations out of 426, cycle: 0.012 s., total time: 0.12 s';
+                bash.appendChild(terminalLine);
+                bash.scrollTop = bash.scrollHeight - bash.clientHeight;
+            },1000)
+        </script>
+</body>
+
+</html>

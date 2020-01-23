@@ -406,8 +406,6 @@ buildChart();
 
     
 
-    let currentSpinnerStep = 0;
-
     function spinnerStep(data) {
       const spinner = document.querySelector('.promo__spinner');
       const image = spinner.querySelector('.spinner__image');
@@ -436,7 +434,7 @@ buildChart();
         timeLeftItem.innerHTML = res.toPrecision(timeLeft.toString().length) + " secs";
     }
     
-    
+      // pre-init 
       image.style.transitionDuration = '';
       spinner.querySelector('.spinner__last-profit-value').innerText = `+${data.profit}$`;
       verticeTexts.forEach((item,index)=>{
@@ -446,6 +444,8 @@ buildChart();
       edgeTexts.forEach((item,index)=>{
         item.querySelector('.edge-text').innerText = data[`action${index+1}`];
       }) 
+      // pre-init end
+      // start vertice animation(each 1000ms will trigger 400ms animation to change question to vertice data)
       vertices.forEach((item,index)=>{
         setTimeout(()=>{
           if (!index) {
@@ -459,18 +459,27 @@ buildChart();
           },400);
         },1000*(index+1));
       });
+      // show edge action(buy/sell)
       edgeTexts.forEach((item,index)=>{
         setTimeout(()=>{
           item.querySelector('.edge-text').classList.remove('hidden');
         },1000*(index+1)+500);
       });
+      // at the end of vertice animation show last profit instead of timer
       setTimeout(()=>{
         clearInterval(counter);
         timeLeftContainer.classList.add('hidden');
         spinner.querySelector('.spinner__last-profit').classList.remove('hidden');
+        let blinkingtext = setInterval(()=>{
+          const shownBlink = document.querySelector('.spinner__last-profit-text.showing');
+          const allBlinkingItems = [...document.querySelectorAll('.spinner__last-profit-text')];
+          const idx = allBlinkingItems.findIndex(item=>item==shownBlink);
+          const nextIdx = idx%3;
+          
+        },500)
       },3500);
+      // after 10000ms spin the spinner(move to 360 deg, after disable transition and move to 0, to remove counters), hide all texts, show question marks after spin end
       setTimeout(()=>{
-        currentSpinnerStep++;
         setTimeout(()=>{
           vertices.forEach((item)=>{
             const data = item.querySelector('.vertice-text-data');
@@ -673,4 +682,23 @@ buildChart();
     }
 
     setInterval(runRobot,100);
+});
+
+// terminal 
+
+[...document.querySelectorAll('.terminal__button')].forEach(item=>{
+  item.addEventListener('click',e=>{
+    e.preventDefault();
+  })
 })
+
+setInterval(()=>{
+  const bash = document.querySelector('.terminal__bash');
+  const terminalLine = document.createElement('div');
+  terminalLine.classList.add('details');
+  terminalLine.innerHTML = '2020-01-10 11:23 +03:00: Fetched 34 out of 34 responses in 0.107 seconds, 422 operations out of 426, cycle: 0.012 s., total time: 0.12 s';
+  bash.appendChild(terminalLine);
+  bash.scrollTop = bash.scrollHeight - bash.clientHeight;
+},1000)
+
+// 

@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'SFMono';
+    src: url(../fonts/SFMonoMedium.otf);
+}
+
 @-webkit-keyframes rotating {
     from {
       -webkit-transform: rotate(0deg);
@@ -555,6 +560,17 @@ section {
     display: none;
 }
 
+.spinner__blinking-text-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+.spinner__blinking-text-item.showing {
+    opacity: 1;
+}
 
 .promo__spinner img {
     max-width: 100%;
@@ -621,7 +637,6 @@ section {
 }
 
 .statistics {
-    height: 790px;
     margin-top: -240px;
     padding-top: 144px;
     background-image: url(../img/whale+water.jpg);
@@ -768,6 +783,77 @@ section {
     bottom: -141px;
     left: -5px;
     z-index: 0;
+}
+
+.terminal {
+    padding: 100px 0;
+}
+
+.terminal__window {
+    width: 600px;
+    margin: 75px auto;
+    background: #2c3e50;
+    height: 350px;
+    border-radius: 5px;
+    display: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal__bash {
+    width: 600px;
+    background: #000;
+    height: 325px;
+    max-height: 325px;
+    overflow-y: scroll;
+    border-radius: 0 0 5px 5px;
+    top: 40px;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.terminal__controls {
+    display: flex;
+    flex: 0 0 25px;
+    align-items: center;
+}
+
+.terminal__buttons-wrapper {
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+}
+
+
+.terminal__button {
+    width: 12px;
+    height: 12px;
+    display: block;
+    border-radius: 50%;
+    margin: 0 6px;
+    border: none;
+    outline: none;
+}
+.terminal__title {
+    flex: 1 0 auto;
+    text-align: center;
+    margin-right: 72px;
+    color: #fff;
+    font-size: 11px;
+}
+
+.terminal__button.close {
+    background: #e74c3c;
+}
+
+.terminal__button.maximize {
+    background: #f1c40f;
+}
+
+.terminal__button.minimize {
+    background: #2ecc71;
 }
 
 .history-diagram {
@@ -1269,7 +1355,6 @@ section {
 }
 
 
-
 .graph-button {
     height: 45px;
     line-height: 45px;
@@ -1292,7 +1377,32 @@ section {
     max-width: 100%;
 } */
 
+.partners {
+    background-image: url(../img/graph-bg.png);
+    padding: 100px 0;
+}
 
+.partners .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.partners__list {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.partners__item {
+    flex: 1 0 15%;
+    padding: 0 10px;
+
+}
+
+.partners__item img {
+    max-width: 100%;
+
+}
 
 .register {
     padding-top: 100px;
