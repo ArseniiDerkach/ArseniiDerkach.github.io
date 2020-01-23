@@ -1961,6 +1961,7 @@ section {
     .graph__item {
         padding: 0;
     }
+
     
     .register__form {
         width: 100%;
@@ -1985,6 +1986,10 @@ section {
 
 }
 @media(max-width: 768px) {
+
+    .terminal {
+        display: none;
+    }
     .spinner__image {
         font-size: 450px;
     }
@@ -2016,6 +2021,16 @@ section {
     }
     .graph__item-edge a {
         font-size: 16px;
+    }
+
+    .partners__list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+
+    .partners__item {
+        flex: 0 0 33%;
     }
 }
 
@@ -2161,6 +2176,7 @@ section {
     .graph__item-edge a {
         font-size: 10px;
     }
+
     .robot {
         font-size: 300px;
     }
