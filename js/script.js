@@ -418,6 +418,11 @@ buildChart();
       timeLeftContainer.classList.remove('hidden');
       let timeLeft = 250;
       timeLeftItem.innerHTML = '';
+      const lastTime = Date.now();
+      spinner.classList.add('new-deal');
+      setTimeout(()=>{
+        spinner.classList.remove('new-deal');
+      },1000);
 
       const timer = () => {
         if (timeLeft <= 0) {
@@ -470,17 +475,29 @@ buildChart();
         clearInterval(counter);
         timeLeftContainer.classList.add('hidden');
         spinner.querySelector('.spinner__last-profit').classList.remove('hidden');
+        spinner.classList.add('spinner-shaking');
         let blinkingtext = setInterval(()=>{
-          const shownBlink = document.querySelector('.spinner__last-profit-text.showing');
-          const allBlinkingItems = [...document.querySelectorAll('.spinner__last-profit-text')];
+          const shownBlink = document.querySelector('.blinking-item.blinking-item-show');
+          const allBlinkingItems = [...document.querySelectorAll('.blinking-item')];
           const idx = allBlinkingItems.findIndex(item=>item==shownBlink);
-          const nextIdx = idx%3;
+          const nextIdx = (idx+1)%3;
+          allBlinkingItems.forEach(item=>item.classList.remove('blinking-item-show'));
+          if (allBlinkingItems[nextIdx].classList.contains('time')){
+            const timePassed = Date.now() - lastTime;
+            console.log(timePassed);
+            allBlinkingItems[nextIdx].querySelector('.spinner__last-profit-value').innerText = `${parseInt(timePassed/60000)}:${parseInt(timePassed/1000)>10?parseInt(timePassed/1000):'0'+parseInt(timePassed/1000)}`
+          }
+          allBlinkingItems[nextIdx].classList.add('blinking-item-show');
           
-        },500)
+          console.log(nextIdx);
+          
+        },1000)
       },3500);
       // after 10000ms spin the spinner(move to 360 deg, after disable transition and move to 0, to remove counters), hide all texts, show question marks after spin end
       setTimeout(()=>{
+        spinner.classList.remove('spinner-shaking');
         setTimeout(()=>{
+          spinner.querySelector('.spinner__last-profit').classList.add('hidden');
           vertices.forEach((item)=>{
             const data = item.querySelector('.vertice-text-data');
             data.classList.add('hidden');

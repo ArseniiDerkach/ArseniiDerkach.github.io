@@ -265,6 +265,44 @@ section {
     margin: 0 auto;
     /* transform: rotate(120deg); */
 }
+.spinner-shaking {
+    animation: shake-the-spinner 2s linear infinite;
+}
+
+@keyframes shake-the-spinner {
+    0% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(0);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+.new-deal {
+    animation: new-deal-found 1s linear;
+}
+
+@keyframes new-deal-found {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 
 .vertice {
     position: absolute;
@@ -524,7 +562,9 @@ section {
     left: 50%;
     transform: translate(-50%,-50%);
     font-size: 28px;
-    margin-top: 20px;
+    width: 130px;
+    height: 60px;
+    text-align: center;
 }
 
 .spinner__last-time-text {
@@ -545,7 +585,26 @@ section {
     left: 50%;
     transform: translate(-50%,-50%);
     font-size: 28px;
-    margin-top: 20px;
+    width: 130px;
+    height: 60px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blinking-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity .2s linear;
+}
+.blinking-item.blinking-item-show {
+    opacity: 1;
 }
 
 .spinner__last-profit-text {
