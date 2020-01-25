@@ -210,6 +210,18 @@ section {
     bottom: -10px;
 }
 
+.toggle-sound.header__menu-item:hover:after {
+    display: none;
+}
+
+.sound-icon {
+    display: none;
+}
+
+.sound-icon.active {
+    display: block;
+}
+
 .container_promo {
     padding-bottom: 60px;
     position: relative;

@@ -25,6 +25,18 @@ $(document).ready(function(){
 
 // smooth scroll end
 
+// sound control
+
+let soundMuted = false;
+
+$('.sound-control').click((e)=>{
+  console.log(e.currentTarget);
+  const icons = [...e.currentTarget.querySelectorAll('.sound-icon')]
+  icons.forEach(item=>item.classList.toggle('active'));
+  const idx = icons.findIndex(item=>item.classList.contains('active'));
+  soundMuted = !!idx;
+})
+
 // const url = 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/msft-c.json';
 const url = `${document.location.origin}/data.json`;
   // GRAPH
@@ -420,6 +432,9 @@ buildChart();
       timeLeftItem.innerHTML = '';
       const lastTime = Date.now();
       spinner.classList.add('new-deal');
+      if (!soundMuted) {
+        document.getElementById("new-deal-notification").play();
+      }
       setTimeout(()=>{
         spinner.classList.remove('new-deal');
       },1000);
@@ -484,12 +499,10 @@ buildChart();
           allBlinkingItems.forEach(item=>item.classList.remove('blinking-item-show'));
           if (allBlinkingItems[nextIdx].classList.contains('time')){
             const timePassed = Date.now() - lastTime;
-            console.log(timePassed);
             allBlinkingItems[nextIdx].querySelector('.spinner__last-profit-value').innerText = `${parseInt(timePassed/60000)}:${parseInt(timePassed/1000)>10?parseInt(timePassed/1000):'0'+parseInt(timePassed/1000)}`
           }
           allBlinkingItems[nextIdx].classList.add('blinking-item-show');
           
-          console.log(nextIdx);
           
         },1000)
       },3500);
