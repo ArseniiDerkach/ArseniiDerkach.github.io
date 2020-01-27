@@ -1424,6 +1424,11 @@ section {
     font-size: 19px;
     text-transform: uppercase;
     cursor: pointer;
+    margin-right: 20px;
+}
+.chart-toggle.robotrade-toggle {
+    background-color: #943794;
+    color: #fff;
 }
 
 .graph-buttons-dates {

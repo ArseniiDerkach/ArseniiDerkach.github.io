@@ -39,6 +39,7 @@ $('.sound-control').click((e)=>{
 
 // const url = 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/msft-c.json';
 const url = `${document.location.origin}/data.json`;
+const url2 = `${document.location.origin}/data-2.json`;
   // GRAPH
   const buildChart = async () => {
     const ctx = $('#graph');
@@ -46,6 +47,7 @@ const url = `${document.location.origin}/data.json`;
     const values1 = [];
     const values2 = [];
     const data = JSON.parse(await getData(url));
+    const data2 = JSON.parse(await getData(url2));
   // const data2 = JSON.parse(await getData('http://localhost:5500/data.json'));
   // const data = await getData('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2019-12-05');
     // data2.forEach(([time,value])=>{
@@ -60,6 +62,9 @@ const url = `${document.location.origin}/data.json`;
   data.forEach(([time,value])=>{
     values1.push(value);
     times.push(moment(time));
+  })
+  data2.forEach(([time,value])=>{
+    values2.push(value);
   })
 
    const timeFormat = 'YYYY';
@@ -77,15 +82,15 @@ const url = `${document.location.origin}/data.json`;
             pointBorderColor: 'transparent',
             pointBackgroundColor: 'transparent'
         },
-      //   {
-      //     label: 'Robotrade',
-      //     data: values2,
-      //     fill: false,
-      //     borderColor: 'rgba(120, 45, 120, 1)',
-      //     borderWidth: 0,
-      //     pointBorderColor: 'transparent',
-      //     pointBackgroundColor: 'transparent'
-      // },
+        {
+          label: 'Robotrade',
+          data: values2.length > 3650 ? [...values2.slice(3650)]: [...values2],
+          fill: false,
+          borderColor: 'rgba(120, 45, 120, 1)',
+          borderWidth: 4,
+          pointBorderColor: 'transparent',
+          pointBackgroundColor: 'transparent'
+      },
     ]},
         options: {
           responsive: false,
@@ -153,8 +158,14 @@ $("#year").click(() =>{
 $(".btc-toggle").click(function() {
   console.log($(this)[0].dataset);
   const tumbler = ($(this)[0].dataset['toggled']==='true') ? true : false;
-
   toggleChart(myChart,tumbler, 'BTC').then((res)=>{
+    $(this)[0].dataset['toggled'] = ($(this)[0].dataset['toggled']==='true') ? 'false' : 'true';
+  }, (err)=>console.log(err));
+})
+$(".robotrade-toggle").click(function() {
+  console.log($(this)[0].dataset);
+  const tumbler = ($(this)[0].dataset['toggled']==='true') ? true : false;
+  toggleChart(myChart,tumbler, 'Robotrade').then((res)=>{
     $(this)[0].dataset['toggled'] = ($(this)[0].dataset['toggled']==='true') ? 'false' : 'true';
   }, (err)=>console.log(err));
 })
@@ -195,9 +206,11 @@ const toggleChart = async(chart,tumbler,label) => {
 
 const changeDates = async(chart, units) =>{
   const data = JSON.parse(await getData(url));
+  const data2 = JSON.parse(await getData(url2));
   var xScale = chart.scales['x-axis-0'];
   const labels = [];
   const values = [];
+  const values2 = [];
   let multiplier;
   switch (units) {
     case 'year':
@@ -226,8 +239,12 @@ data.forEach(([time,value])=>{
   labels.push(moment(time));
   values.push(value);
 })
+data2.forEach(([time,value])=>{
+  values2.push(value);
+})
   chart.data.labels = (labels.length > 10*multiplier) ? [...labels.slice(10*multiplier)]: [...labels];
   chart.data.datasets[0].data = (values.length > 10*multiplier) ? [...values.slice(10*multiplier)] : [...values];
+  chart.data.datasets[1].data = (values2.length > 10*multiplier) ? [...values2.slice(10*multiplier)] : [...values2];
   chart.update();
 }
 
