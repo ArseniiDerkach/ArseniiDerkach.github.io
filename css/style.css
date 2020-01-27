@@ -2263,7 +2263,7 @@ section {
     }
 
     .partners {
-        padding: 0 40px;
+        padding: 40px 0;
     }
 
     .partners__item {
@@ -2283,6 +2283,7 @@ section {
         margin-right: 8px;
     }
     .register {
+        padding-top: 200px;
         background-size: cover;
         background-position: bottom center;
     }
