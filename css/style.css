@@ -2282,6 +2282,10 @@ section {
         width: 12px;
         margin-right: 8px;
     }
+    .register {
+        background-size: cover;
+        background-position: bottom center;
+    }
     .register__form {
         padding: 0 30px;
         margin-bottom: 30px;
