@@ -432,6 +432,7 @@ buildChart();
       timeLeftItem.innerHTML = '';
       const lastTime = Date.now();
       spinner.classList.add('new-deal');
+      spinner.querySelector('.spinner__image').classList.remove('fast-spinner-shaking');
       if (!soundMuted) {
         document.getElementById("new-deal-notification").play();
       }
@@ -490,7 +491,7 @@ buildChart();
         clearInterval(counter);
         timeLeftContainer.classList.add('hidden');
         spinner.querySelector('.spinner__last-profit').classList.remove('hidden');
-        spinner.classList.add('spinner-shaking');
+        spinner.querySelector('.spinner__image').classList.add('spinner-shaking');
         let blinkingtext = setInterval(()=>{
           const shownBlink = document.querySelector('.blinking-item.blinking-item-show');
           const allBlinkingItems = [...document.querySelectorAll('.blinking-item')];
@@ -508,7 +509,6 @@ buildChart();
       },3500);
       // after 10000ms spin the spinner(move to 360 deg, after disable transition and move to 0, to remove counters), hide all texts, show question marks after spin end
       setTimeout(()=>{
-        spinner.classList.remove('spinner-shaking');
         setTimeout(()=>{
           spinner.querySelector('.spinner__last-profit').classList.add('hidden');
           vertices.forEach((item)=>{
@@ -518,6 +518,8 @@ buildChart();
           edgeTexts.forEach((item)=>{
             item.querySelector('.edge-text').classList.add('hidden');
           })
+          spinner.querySelector('.spinner__image').classList.remove('spinner-shaking');
+        spinner.querySelector('.spinner__image').classList.add('fast-spinner-shaking');
         },1000);
         
       setTimeout(()=>{

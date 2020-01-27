@@ -281,6 +281,12 @@ section {
     animation: shake-the-spinner 2s linear infinite;
 }
 
+.fast-spinner-shaking {
+    animation: shake-the-spinner 0.2s linear infinite;
+}
+
+
+
 @keyframes shake-the-spinner {
     0% {
         transform: rotate(0);
