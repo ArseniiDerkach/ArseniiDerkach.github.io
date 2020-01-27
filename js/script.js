@@ -661,10 +661,18 @@ buildChart();
         const topSm = triangleSm.css('top');
         const topLg = triangleLg.css('top');
         const scrollProgress = offsetTop / (2 * height);
-        triangleSm.css('top',`${height/2 - scrollProgress * height/2}px`);
+        if (window.innerWidth < 768) {
+          triangleSm.css('top',`${height/2 - scrollProgress * height/2 - 70}px`);
         triangleSm.css('bottom',`unset`);
-        triangleLg.css('top',`${height/2 - scrollProgress * height/2}px`);
+        triangleLg.css('top',`${height/2 - scrollProgress * height/2 -70}px`);
         triangleLg.css('bottom',`unset`);
+        } else {
+          triangleSm.css('top',`${height/2 - scrollProgress * height/2}px`);
+          triangleSm.css('bottom',`unset`);
+          triangleLg.css('top',`${height/2 - scrollProgress * height/2}px`);
+          triangleLg.css('bottom',`unset`);
+        }
+        
        }
       
     })

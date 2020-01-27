@@ -132,6 +132,8 @@ section {
     color: #fff;
     text-transform: uppercase;
     flex: 0 0 100%;
+    position: relative;
+    z-index: 9;
 }
 
 .preloader .header {
@@ -2258,6 +2260,10 @@ section {
     }
     .graph__item-edge a {
         font-size: 10px;
+    }
+
+    .partners {
+        padding: 0 40px;
     }
 
     .robot {
